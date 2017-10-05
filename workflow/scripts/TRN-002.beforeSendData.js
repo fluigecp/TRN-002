@@ -1,0 +1,43 @@
+function beforeSendData(customFields,customFacts){
+    customFields[0] =hAPI.getCardValue("custom_0");
+	customFields[1] =hAPI.getCardValue("custom_1");
+	customFields[2] =hAPI.getCardValue("custom_2");
+	customFields[3] =hAPI.getCardValue("custom_3");
+	customFields[4] =hAPI.getCardValue("custom_4");
+	customFields[5] =hAPI.getCardValue("custom_5");
+	customFields[6] =hAPI.getCardValue("custom_6");
+	customFields[7] =hAPI.getCardValue("custom_7");
+	customFields[8] =hAPI.getCardValue("custom_8");
+	customFields[9] =hAPI.getCardValue("custom_9");
+	customFields[10] =hAPI.getCardValue("custom_10");
+	customFields[11] =hAPI.getCardValue("custom_11");
+	customFields[12] =hAPI.getCardValue("custom_12");
+	customFields[13] =hAPI.getCardValue("custom_13");
+	customFields[14] =hAPI.getCardValue("custom_14");
+	customFields[15] =hAPI.getCardValue("custom_15");
+	customFields[16] =hAPI.getCardValue("custom_16");
+	customFields[17] =hAPI.getCardValue("custom_17");
+	customFields[18] =hAPI.getCardValue("custom_18");
+	customFields[19] =hAPI.getCardValue("custom_19");
+	customFields[20] =hAPI.getCardValue("custom_20");
+	customFields[21] =hAPI.getCardValue("custom_21");
+	customFields[22] =hAPI.getCardValue("custom_22");
+	customFields[23] =hAPI.getCardValue("custom_23");
+	customFields[24] =hAPI.getCardValue("custom_24");
+	customFields[25] =hAPI.getCardValue("custom_25");
+	customFields[26] =hAPI.getCardValue("custom_26");
+	customFields[27] =hAPI.getCardValue("custom_27");
+	customFields[28] =hAPI.getCardValue("custom_28");
+	customFields[29] =hAPI.getCardValue("custom_29");
+
+	customFacts[0]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_0"));
+	customFacts[1]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_1"));
+	customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_2"));
+	customFacts[3]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_3"));
+	customFacts[4]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_4"));
+	customFacts[5]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_5"));
+	customFacts[6]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_6"));
+	customFacts[7]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_7"));
+	customFacts[8]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_8"));
+	customFacts[9]=java.lang.Double.parseDouble(hAPI.getCardValue("fato_9"));
+}
