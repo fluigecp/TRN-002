@@ -1,0 +1,87 @@
+function servicetask60(attempt, message) {
+	try {
+		var numSolicPai = getValue('WKNumProces');
+
+		var servico = ServiceManager.getService("ECMWorkflowEngineService").getBean();
+		log.warn("%%%%%% servico : " + servico);
+
+		var locator = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
+		log.warn("%%%%%% locator : " + locator);
+
+		var WorkflowEngineService = locator.getWorkflowEngineServicePort();
+		log.warn("%%%%%% WorkflowEngineService : " + WorkflowEngineService);
+
+		var username = hAPI.getAdvancedProperty("loginUserWS");
+		log.warn("%%%%%% username : " + username);
+
+		var password = hAPI.getAdvancedProperty("passwdUserWS");
+		log.warn("%%%%%% password : " + password);
+
+		var companyId = parseInt(getValue("WKCompany"));
+		log.warn("%%%%%% companyId : " + companyId);
+
+		var processId = "TRN-006";
+
+		var choosedState = 18;
+
+		var comments = "Solicitação aberta por: Nº " + numSolicPai;
+		log.warn("%%%%%% comments : " + comments);
+
+		var userId = hAPI.getAdvancedProperty("matUserWS");
+		log.warn("%%%%%% userId : " + userId);
+
+		var completeTask = true;
+		log.warn("%%%%%% completeTask : " + completeTask);
+
+		var attachments = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessAttachmentDtoArray");
+		log.warn("%%%%%% attachments : " + attachments);
+
+		var appointment = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessTaskAppointmentDtoArray");
+		log.warn("%%%%%% appointment : " + appointment);
+
+		var managerMode = false;
+		log.warn("%%%%%% managerMode : " + managerMode);
+
+		var novaSolic;
+
+		var colleagueIds = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+		colleagueIds.getItem().add('System:Auto');
+		log.warn("%%%%%% colleagueIds");
+		
+
+
+
+
+	} catch (error) {
+		log.error(error);
+		throw error;
+	}
+}
+
+/**
+ * retorna um array de objetos com nome e matricula de todos os participantes.
+ * @param {string} str - Parâmetro string com o nome de todos os participantes, separados com virgula 
+ */
+function filterParticipantesObj(str) {
+	var strArray = str.split(",");
+	var participantesObj = [];
+	for (var i = 0; i < strArray.length; i++) {
+		participantesObj.push({
+			nome: strArray[i].substring(strArray[i].indexOf("-") + 2),
+			matricula: strArray[i].substring(0, strArray[i].indexOf("-") - 1)
+		});
+	}
+	return participantesObj;
+}
+/**
+ * Verifica se um usuário existe na base de usuários do Fluig
+ * @param {string} mat - Matrícula do usuário
+ */
+function searchUserMat(mat) {
+	var c2 = DatasetFactory.createConstraint("colleaguePK.colleagueId", mat, mat, ConstraintType.MUST);
+	var dataset = DatasetFactory.getDataset("colleague", null, [c2], null);
+	if (dataset.values.length > 0) {
+		return true;
+	}
+	return false;
+}
