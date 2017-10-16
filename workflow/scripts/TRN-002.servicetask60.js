@@ -2,6 +2,9 @@ function servicetask60(attempt, message) {
 	try {
 		var numSolicPai = getValue('WKNumProces');
 
+		var documentId = hAPI.getCardValue( "documentid" );
+		log.warn("%%%%%% documentId : " + documentId);
+
 		var servico = ServiceManager.getService("ECMWorkflowEngineService").getBean();
 		log.warn("%%%%%% servico : " + servico);
 
@@ -48,7 +51,41 @@ function servicetask60(attempt, message) {
 		colleagueIds.getItem().add('System:Auto');
 		log.warn("%%%%%% colleagueIds");
 		
+		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
+			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic", "numSolicTreinamento"
+		];
 
+		var treinamentos = getTreinamentos(documentId);
+		var solicitacao = getSolicitacao(documentId);
+
+		for (var index = 0; index < treinamentos.rowsCount; index++) {
+			var participantesObj = filterParticipantesObj( treinamentos.getValue(index, "matriculasNomesTbTreinamentos") );
+			for (var i = 0; i < participantesObj.length; i++) {
+				var fieldsPropor = [];
+				var currentMat = hAPI.getCardValue("matResponsavelDepartamento");
+				if (searchUserMat(participantesObj[i].matricula)) {
+					currentMat = participantesObj[i].matricula;
+				}
+				fieldsPropor.push(participantesObj[i].nome + "");
+				fieldsPropor.push(currentMat + "");
+				fieldsPropor.push(solicitacao.getValue(0,"departamento") + "");
+				fieldsPropor.push(treinamentos.getValue(index, "treinamentoTbTreinamentos") + "");
+				fieldsPropor.push(treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "");
+				fieldsPropor.push(solicitacao.getValue(0,"anoVigencia") + "");
+				fieldsPropor.push(treinamentos.getValue(index, "cargaHorariaTbTreinamentos") + "");
+				fieldsPropor.push(currentMat + "");
+				fieldsPropor.push(numSolicPai + "");
+				var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
+				for (var x = 0; x < fieldsPropor.length; x++) {
+					var objField = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+					objField.getItem().add(fieldsAvaliacao[x]);
+					objField.getItem().add(fieldsPropor[x]);
+					cardData.getItem().add(objField);
+				}
+				novaSolic = WorkflowEngineService.startProcess(username, password, companyId, processId, choosedState, colleagueIds, comments, userId,
+					completeTask, attachments, cardData, appointment, managerMode);
+			}
+		}
 
 
 
@@ -84,4 +121,20 @@ function searchUserMat(mat) {
 		return true;
 	}
 	return false;
+}
+
+function getTreinamentos(documentId) {
+	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint("documentid" , documentId, documentId, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint("statsTbTreinamentos","REALIZADO", "REALIZADO", ConstraintType.MUST);
+	var tablename = DatasetFactory.createConstraint("tablename", "tbTreinamentos", "tbTreinamentos", ConstraintType.MUST);
+	var treinamentos = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2, c3, tablename], null);
+	return treinamentos;
+}
+
+function getSolicitacao(documentId) {
+	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint("documentid" , documentId, documentId, ConstraintType.MUST);
+	var solicitacao = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2], null);
+	return solicitacao;
 }

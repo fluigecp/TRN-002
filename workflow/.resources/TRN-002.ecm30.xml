@@ -15,7 +15,7 @@
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
-    <periodId>Horário_Comercial</periodId>
+    <periodId>Default</periodId>
     <uniqueCardVersion>false</uniqueCardVersion>
     <keyWord></keyWord>
     <complementsLevel>1</complementsLevel>
@@ -27,7 +27,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Propor Treinamentos Anuais</processId>
-      <version>4</version>
+      <version>94</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -1022,7 +1022,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Sim&quot;</condition>
@@ -1033,7 +1033,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Não&quot;</condition>
@@ -1044,7 +1044,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Cancelar&quot;</condition>
@@ -1055,7 +1055,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Sim&quot;</condition>
@@ -1066,7 +1066,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Não&quot;</condition>
@@ -1077,7 +1077,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Cancelar&quot;</condition>
@@ -1088,7 +1088,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>28</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoRH&quot;) == &quot;Sim&quot;</condition>
@@ -1099,7 +1099,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>28</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoRH&quot;) == &quot;Não&quot;</condition>
@@ -1110,7 +1110,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoGGR&quot;) == &quot;Sim&quot;</condition>
@@ -1121,7 +1121,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoGGR&quot;) == &quot;Não&quot;</condition>
@@ -1132,7 +1132,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;atualizarPlanejamento&quot;) == &quot;Sim&quot;</condition>
@@ -1143,7 +1143,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>94</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;atualizarPlanejamento&quot;) != &quot;Sim&quot;</condition>
@@ -1789,6 +1789,9 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 	try {
 		var numSolicPai = getValue(&apos;WKNumProces&apos;);
 
+		var documentId = hAPI.getCardValue( &quot;documentid&quot; );
+		log.warn(&quot;%%%%%% documentId : &quot; + documentId);
+
 		var servico = ServiceManager.getService(&quot;ECMWorkflowEngineService&quot;).getBean();
 		log.warn(&quot;%%%%%% servico : &quot; + servico);
 
@@ -1835,7 +1838,41 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 		colleagueIds.getItem().add(&apos;System:Auto&apos;);
 		log.warn(&quot;%%%%%% colleagueIds&quot;);
 		
+		var fieldsAvaliacao = [&quot;nomeParticipante&quot;, &quot;matricula&quot;, &quot;area&quot;, &quot;cursoTreinamento&quot;,
+			&quot;instituicao&quot;, &quot;dataRealizacao&quot;, &quot;cargaHoraria&quot;, &quot;matResponsavelSolic&quot;, &quot;numSolicTreinamento&quot;
+		];
 
+		var treinamentos = getTreinamentos(documentId);
+		var solicitacao = getSolicitacao(documentId);
+
+		for (var index = 0; index &lt; treinamentos.rowsCount; index++) {
+			var participantesObj = filterParticipantesObj( treinamentos.getValue(index, &quot;matriculasNomesTbTreinamentos&quot;) );
+			for (var i = 0; i &lt; participantesObj.length; i++) {
+				var fieldsPropor = [];
+				var currentMat = hAPI.getCardValue(&quot;matResponsavelDepartamento&quot;);
+				if (searchUserMat(participantesObj[i].matricula)) {
+					currentMat = participantesObj[i].matricula;
+				}
+				fieldsPropor.push(participantesObj[i].nome + &quot;&quot;);
+				fieldsPropor.push(currentMat + &quot;&quot;);
+				fieldsPropor.push(solicitacao.getValue(0,&quot;departamento&quot;) + &quot;&quot;);
+				fieldsPropor.push(treinamentos.getValue(index, &quot;treinamentoTbTreinamentos&quot;) + &quot;&quot;);
+				fieldsPropor.push(treinamentos.getValue(index, &quot;entidadeSugeridaTbTreinamentos&quot;) + &quot;&quot;);
+				fieldsPropor.push(solicitacao.getValue(0,&quot;anoVigencia&quot;) + &quot;&quot;);
+				fieldsPropor.push(treinamentos.getValue(index, &quot;cargaHorariaTbTreinamentos&quot;) + &quot;&quot;);
+				fieldsPropor.push(currentMat + &quot;&quot;);
+				fieldsPropor.push(numSolicPai + &quot;&quot;);
+				var cardData = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArrayArray&quot;);
+				for (var x = 0; x &lt; fieldsPropor.length; x++) {
+					var objField = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArray&quot;);
+					objField.getItem().add(fieldsAvaliacao[x]);
+					objField.getItem().add(fieldsPropor[x]);
+					cardData.getItem().add(objField);
+				}
+				novaSolic = WorkflowEngineService.startProcess(username, password, companyId, processId, choosedState, colleagueIds, comments, userId,
+					completeTask, attachments, cardData, appointment, managerMode);
+			}
+		}
 
 
 
@@ -1872,7 +1909,22 @@ function searchUserMat(mat) {
 	}
 	return false;
 }
-</eventDescription>
+
+function getTreinamentos(documentId) {
+	var c1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot; , documentId, documentId, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint(&quot;statsTbTreinamentos&quot;,&quot;REALIZADO&quot;, &quot;REALIZADO&quot;, ConstraintType.MUST);
+	var tablename = DatasetFactory.createConstraint(&quot;tablename&quot;, &quot;tbTreinamentos&quot;, &quot;tbTreinamentos&quot;, ConstraintType.MUST);
+	var treinamentos = DatasetFactory.getDataset(&quot;propor_treinamentos_anuais&quot;, null, [c1, c2, c3, tablename], null);
+	return treinamentos;
+}
+
+function getSolicitacao(documentId) {
+	var c1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot; , documentId, documentId, ConstraintType.MUST);
+	var solicitacao = DatasetFactory.getDataset(&quot;propor_treinamentos_anuais&quot;, null, [c1, c2], null);
+	return solicitacao;
+}</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -1899,7 +1951,7 @@ function searchUserMat(mat) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>loginUserWS</propertyId>
-        <version>4</version>
+        <version>94</version>
       </advancedProcessPropertiesPK>
       <propertieValue>servico</propertieValue>
     </AdvancedProcessProperties>
@@ -1908,7 +1960,7 @@ function searchUserMat(mat) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>matUserWS</propertyId>
-        <version>4</version>
+        <version>94</version>
       </advancedProcessPropertiesPK>
       <propertieValue>0000</propertieValue>
     </AdvancedProcessProperties>
@@ -1917,7 +1969,7 @@ function searchUserMat(mat) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>passwdUserWS</propertyId>
-        <version>4</version>
+        <version>94</version>
       </advancedProcessPropertiesPK>
       <propertieValue>fcea920f7412b5da7be0cf42b8c93759</propertieValue>
     </AdvancedProcessProperties>
@@ -1925,10 +1977,10 @@ function searchUserMat(mat) {
   <list>
     <SwimLane>
       <color>DFDFDF</color>
-      <height>161</height>
+      <height>163</height>
       <width>2801</width>
       <positionX>0</positionX>
-      <positionY>552</positionY>
+      <positionY>550</positionY>
       <stateName>Processos</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
@@ -2011,7 +2063,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2022,7 +2074,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>15</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2033,7 +2085,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2044,7 +2096,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2055,7 +2107,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>39</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2066,7 +2118,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>39</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2077,7 +2129,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>39</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2088,7 +2140,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2099,7 +2151,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>44</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2110,7 +2162,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2121,7 +2173,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>45</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2132,7 +2184,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>46</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2143,7 +2195,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>46</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2154,7 +2206,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>48</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2165,7 +2217,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>48</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2176,7 +2228,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2187,7 +2239,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>53</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2198,7 +2250,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>54</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2209,7 +2261,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>54</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2220,7 +2272,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>55</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2231,7 +2283,7 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>58</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2242,29 +2294,29 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>61</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>2091</positionX>
-      <positionY>822</positionY>
+      <positionX>2092</positionX>
+      <positionY>815</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>64</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>2364</positionX>
-      <positionY>633</positionY>
+      <positionY>632</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>65</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2275,12 +2327,12 @@ function searchUserMat(mat) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <linkSequence>65</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>2577</positionX>
-      <positionY>821</positionY>
+      <positionY>815</positionY>
     </ProcessLinkBend>
   </list>
   <list>
@@ -2288,7 +2340,7 @@ function searchUserMat(mat) {
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <stateSequence>51</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
@@ -2304,7 +2356,7 @@ function searchUserMat(mat) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <stateSequence>0</stateSequence>
         <propertyName>loginUserWS</propertyName>
       </extendedPropertyFieldPK>
@@ -2317,7 +2369,7 @@ function searchUserMat(mat) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <stateSequence>0</stateSequence>
         <propertyName>matUserWS</propertyName>
       </extendedPropertyFieldPK>
@@ -2330,7 +2382,7 @@ function searchUserMat(mat) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>4</version>
+        <version>94</version>
         <stateSequence>0</stateSequence>
         <propertyName>passwdUserWS</propertyName>
       </extendedPropertyFieldPK>
@@ -2347,7 +2399,7 @@ function searchUserMat(mat) {
       <processId>TRN-002</processId>
       <version>1</version>
       <sequence>60</sequence>
-      <attempts>1</attempts>
+      <attempts>0</attempts>
       <sucessFullMessage>Integração executada com sucesso</sucessFullMessage>
       <serviceName>ECMWorkflowEngineService</serviceName>
     </ProcessStateService>
