@@ -52,7 +52,7 @@ function servicetask60(attempt, message) {
 		log.warn("%%%%%% colleagueIds");
 		
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
-			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic", "numSolicTreinamento"
+			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic", "numSolicTreinamento", "classificacaoCurso"
 		];
 
 		var treinamentos = getTreinamentos(documentId);
@@ -66,6 +66,18 @@ function servicetask60(attempt, message) {
 				if (searchUserMat(participantesObj[i].matricula)) {
 					currentMat = participantesObj[i].matricula;
 				}
+				var classificacao = treinamentos.getValue(index, "classificacaoTbTreinamentos");
+				
+				if ( classificacao == "legislacao_obrigatorio" ){ 
+					classificacao = "Legislação/Obrigatório";
+				}
+				if ( classificacao == "projeto_implantacao" ){
+					 classificacao = "Projeto/implantação";
+				}
+				if( classificacao == "aprimoramento_profissional" ){
+					 classificacao = "Aprimoramento profissional";
+				}
+				log.warn("%%%%%% classificacao: "+classificacao);
 				fieldsPropor.push(participantesObj[i].nome + "");
 				fieldsPropor.push(currentMat + "");
 				fieldsPropor.push(solicitacao.getValue(0,"departamento") + "");
@@ -75,6 +87,7 @@ function servicetask60(attempt, message) {
 				fieldsPropor.push(treinamentos.getValue(index, "cargaHorariaTbTreinamentos") + "");
 				fieldsPropor.push(currentMat + "");
 				fieldsPropor.push(numSolicPai + "");
+				fieldsPropor.push(classificacao + "");
 				var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
 				for (var x = 0; x < fieldsPropor.length; x++) {
 					var objField = servico.instantiate("net.java.dev.jaxb.array.StringArray");

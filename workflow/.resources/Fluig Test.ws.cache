@@ -1505,7 +1505,7 @@
        <int>1</int>
       </void>
       <void property="processDescription">
-       <string>Registrar Atendimento Psicologia - (Grupo)</string>
+       <string>Registrar Atendimento Psicologia (Grupo)</string>
       </void>
       <void property="processId">
        <string>MED-007</string>
@@ -1557,7 +1557,7 @@
        <int>1</int>
       </void>
       <void property="processDescription">
-       <string>Registrar Atendimento Nutrição - (Grupo)</string>
+       <string>Registrar Atendimento Nutrição (Grupo)</string>
       </void>
       <void property="processId">
        <string>MED-011</string>
