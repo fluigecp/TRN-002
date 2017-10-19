@@ -82,7 +82,7 @@ function servicetask60(attempt, message) {
 				}
 				log.warn("%%%%%% classificacao: " + classificacao);
 				fieldsPropor.push(participantesObj[i].nome + "");
-				fieldsPropor.push(currentMat + "");
+				fieldsPropor.push(participantesObj[i].matricula + "");
 				fieldsPropor.push(solicitacao.getValue(0, "departamento") + "");
 				fieldsPropor.push(treinamentos.getValue(index, "treinamentoTbTreinamentos") + "");
 				fieldsPropor.push(treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "");

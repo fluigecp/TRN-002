@@ -1869,7 +1869,7 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 				}
 				log.warn(&quot;%%%%%% classificacao: &quot; + classificacao);
 				fieldsPropor.push(participantesObj[i].nome + &quot;&quot;);
-				fieldsPropor.push(currentMat + &quot;&quot;);
+				fieldsPropor.push(participantesObj[i].matricula + &quot;&quot;);
 				fieldsPropor.push(solicitacao.getValue(0, &quot;departamento&quot;) + &quot;&quot;);
 				fieldsPropor.push(treinamentos.getValue(index, &quot;treinamentoTbTreinamentos&quot;) + &quot;&quot;);
 				fieldsPropor.push(treinamentos.getValue(index, &quot;entidadeSugeridaTbTreinamentos&quot;) + &quot;&quot;);
