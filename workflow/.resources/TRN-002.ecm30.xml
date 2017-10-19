@@ -1840,7 +1840,7 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 
 		var fieldsAvaliacao = [&quot;nomeParticipante&quot;, &quot;matricula&quot;, &quot;area&quot;, &quot;cursoTreinamento&quot;,
 			&quot;instituicao&quot;, &quot;dataRealizacao&quot;, &quot;cargaHoraria&quot;, &quot;matResponsavelSolic&quot;,
-			&quot;numSolicTreinamento&quot;, &quot;classificacaoCurso&quot;, &quot;matResponsavelArea&quot;
+			&quot;numSolicTreinamento&quot;, &quot;classificacaoCurso&quot;, &quot;campoDescritor&quot;, &quot;matResponsavelArea&quot;
 		];
 
 		var treinamentos = getTreinamentos(documentId);
@@ -1851,6 +1851,7 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 			for (var i = 0; i &lt; participantesObj.length; i++) {
 				var fieldsPropor = [];
 				var responsavelArea = hAPI.getCardValue(&quot;matResponsavelDepartamento&quot;);
+				var camposDescritor = participantesObj[i].nome + &quot; - &quot; + treinamentos.getValue(index, &quot;treinamentoTbTreinamentos&quot;);
 				var currentMat = responsavelArea;
 				if (searchUserMat(participantesObj[i].matricula)) {
 					currentMat = participantesObj[i].matricula;
@@ -1877,6 +1878,7 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 				fieldsPropor.push(currentMat + &quot;&quot;);
 				fieldsPropor.push(numSolicPai + &quot;&quot;);
 				fieldsPropor.push(classificacao + &quot;&quot;);
+				fieldsPropor.push(camposDescritor + &quot;&quot;);
 				fieldsPropor.push(responsavelArea + &quot;&quot;);
 				var cardData = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArrayArray&quot;);
 				for (var x = 0; x &lt; fieldsPropor.length; x++) {
