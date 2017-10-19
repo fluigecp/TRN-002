@@ -2,7 +2,7 @@ function servicetask60(attempt, message) {
 	try {
 		var numSolicPai = getValue('WKNumProces');
 
-		var documentId = hAPI.getCardValue( "documentid" );
+		var documentId = hAPI.getCardValue("documentid");
 		log.warn("%%%%%% documentId : " + documentId);
 
 		var servico = ServiceManager.getService("ECMWorkflowEngineService").getBean();
@@ -50,44 +50,47 @@ function servicetask60(attempt, message) {
 		var colleagueIds = servico.instantiate("net.java.dev.jaxb.array.StringArray");
 		colleagueIds.getItem().add('System:Auto');
 		log.warn("%%%%%% colleagueIds");
-		
+
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
-			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic", "numSolicTreinamento", "classificacaoCurso"
+			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic",
+			"numSolicTreinamento", "classificacaoCurso", "matResponsavelArea"
 		];
 
 		var treinamentos = getTreinamentos(documentId);
 		var solicitacao = getSolicitacao(documentId);
 
 		for (var index = 0; index < treinamentos.rowsCount; index++) {
-			var participantesObj = filterParticipantesObj( treinamentos.getValue(index, "matriculasNomesTbTreinamentos") );
+			var participantesObj = filterParticipantesObj(treinamentos.getValue(index, "matriculasNomesTbTreinamentos"));
 			for (var i = 0; i < participantesObj.length; i++) {
 				var fieldsPropor = [];
-				var currentMat = hAPI.getCardValue("matResponsavelDepartamento");
+				var responsavelArea = hAPI.getCardValue("matResponsavelDepartamento");
+				var currentMat = responsavelArea;
 				if (searchUserMat(participantesObj[i].matricula)) {
 					currentMat = participantesObj[i].matricula;
 				}
 				var classificacao = treinamentos.getValue(index, "classificacaoTbTreinamentos");
-				
-				if ( classificacao == "legislacao_obrigatorio" ){ 
+
+				if (classificacao == "legislacao_obrigatorio") {
 					classificacao = "Legislação/Obrigatório";
 				}
-				if ( classificacao == "projeto_implantacao" ){
-					 classificacao = "Projeto/implantação";
+				if (classificacao == "projeto_implantacao") {
+					classificacao = "Projeto/implantação";
 				}
-				if( classificacao == "aprimoramento_profissional" ){
-					 classificacao = "Aprimoramento profissional";
+				if (classificacao == "aprimoramento_profissional") {
+					classificacao = "Aprimoramento profissional";
 				}
-				log.warn("%%%%%% classificacao: "+classificacao);
+				log.warn("%%%%%% classificacao: " + classificacao);
 				fieldsPropor.push(participantesObj[i].nome + "");
 				fieldsPropor.push(currentMat + "");
-				fieldsPropor.push(solicitacao.getValue(0,"departamento") + "");
+				fieldsPropor.push(solicitacao.getValue(0, "departamento") + "");
 				fieldsPropor.push(treinamentos.getValue(index, "treinamentoTbTreinamentos") + "");
 				fieldsPropor.push(treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "");
-				fieldsPropor.push(solicitacao.getValue(0,"anoVigencia") + "");
+				fieldsPropor.push(solicitacao.getValue(0, "anoVigencia") + "");
 				fieldsPropor.push(treinamentos.getValue(index, "cargaHorariaTbTreinamentos") + "");
 				fieldsPropor.push(currentMat + "");
 				fieldsPropor.push(numSolicPai + "");
 				fieldsPropor.push(classificacao + "");
+				fieldsPropor.push(responsavelArea + "");
 				var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
 				for (var x = 0; x < fieldsPropor.length; x++) {
 					var objField = servico.instantiate("net.java.dev.jaxb.array.StringArray");
@@ -138,8 +141,8 @@ function searchUserMat(mat) {
 
 function getTreinamentos(documentId) {
 	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-	var c2 = DatasetFactory.createConstraint("documentid" , documentId, documentId, ConstraintType.MUST);
-	var c3 = DatasetFactory.createConstraint("statsTbTreinamentos","REALIZADO", "REALIZADO", ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint("documentid", documentId, documentId, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint("statsTbTreinamentos", "REALIZADO", "REALIZADO", ConstraintType.MUST);
 	var tablename = DatasetFactory.createConstraint("tablename", "tbTreinamentos", "tbTreinamentos", ConstraintType.MUST);
 	var treinamentos = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2, c3, tablename], null);
 	return treinamentos;
@@ -147,7 +150,7 @@ function getTreinamentos(documentId) {
 
 function getSolicitacao(documentId) {
 	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-	var c2 = DatasetFactory.createConstraint("documentid" , documentId, documentId, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint("documentid", documentId, documentId, ConstraintType.MUST);
 	var solicitacao = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2], null);
 	return solicitacao;
 }

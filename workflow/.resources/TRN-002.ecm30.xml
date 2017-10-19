@@ -27,7 +27,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Propor Treinamentos Anuais</processId>
-      <version>107</version>
+      <version>110</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -1022,7 +1022,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Sim&quot;</condition>
@@ -1033,7 +1033,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Não&quot;</condition>
@@ -1044,7 +1044,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>3</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovado&quot;) == &quot;Cancelar&quot;</condition>
@@ -1055,7 +1055,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Sim&quot;</condition>
@@ -1066,7 +1066,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Não&quot;</condition>
@@ -1077,7 +1077,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>3</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;treinamentoAprovadoGGR&quot;) == &quot;Cancelar&quot;</condition>
@@ -1088,7 +1088,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>28</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoRH&quot;) == &quot;Sim&quot;</condition>
@@ -1099,7 +1099,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>28</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoRH&quot;) == &quot;Não&quot;</condition>
@@ -1110,7 +1110,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoGGR&quot;) == &quot;Sim&quot;</condition>
@@ -1121,7 +1121,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;planejamentoAprovadoGGR&quot;) == &quot;Não&quot;</condition>
@@ -1132,7 +1132,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>1</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;atualizarPlanejamento&quot;) == &quot;Sim&quot;</condition>
@@ -1143,7 +1143,7 @@
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <expressionOrder>2</expressionOrder>
-        <version>107</version>
+        <version>110</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;atualizarPlanejamento&quot;) != &quot;Sim&quot;</condition>
@@ -1789,7 +1789,7 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 	try {
 		var numSolicPai = getValue(&apos;WKNumProces&apos;);
 
-		var documentId = hAPI.getCardValue( &quot;documentid&quot; );
+		var documentId = hAPI.getCardValue(&quot;documentid&quot;);
 		log.warn(&quot;%%%%%% documentId : &quot; + documentId);
 
 		var servico = ServiceManager.getService(&quot;ECMWorkflowEngineService&quot;).getBean();
@@ -1837,39 +1837,47 @@ function getOrcamentoByNumProcessAndYear(numProcess, anoVigencia) {&#xd;
 		var colleagueIds = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArray&quot;);
 		colleagueIds.getItem().add(&apos;System:Auto&apos;);
 		log.warn(&quot;%%%%%% colleagueIds&quot;);
-		
+
 		var fieldsAvaliacao = [&quot;nomeParticipante&quot;, &quot;matricula&quot;, &quot;area&quot;, &quot;cursoTreinamento&quot;,
-			&quot;instituicao&quot;, &quot;dataRealizacao&quot;, &quot;cargaHoraria&quot;, &quot;matResponsavelSolic&quot;, &quot;numSolicTreinamento&quot;, &quot;classificacaoCurso&quot;
+			&quot;instituicao&quot;, &quot;dataRealizacao&quot;, &quot;cargaHoraria&quot;, &quot;matResponsavelSolic&quot;,
+			&quot;numSolicTreinamento&quot;, &quot;classificacaoCurso&quot;, &quot;matResponsavelArea&quot;
 		];
 
 		var treinamentos = getTreinamentos(documentId);
 		var solicitacao = getSolicitacao(documentId);
 
 		for (var index = 0; index &lt; treinamentos.rowsCount; index++) {
-			var participantesObj = filterParticipantesObj( treinamentos.getValue(index, &quot;matriculasNomesTbTreinamentos&quot;) );
+			var participantesObj = filterParticipantesObj(treinamentos.getValue(index, &quot;matriculasNomesTbTreinamentos&quot;));
 			for (var i = 0; i &lt; participantesObj.length; i++) {
 				var fieldsPropor = [];
-				var currentMat = hAPI.getCardValue(&quot;matResponsavelDepartamento&quot;);
+				var responsavelArea = hAPI.getCardValue(&quot;matResponsavelDepartamento&quot;);
+				var currentMat = responsavelArea;
 				if (searchUserMat(participantesObj[i].matricula)) {
 					currentMat = participantesObj[i].matricula;
 				}
 				var classificacao = treinamentos.getValue(index, &quot;classificacaoTbTreinamentos&quot;);
-				switch(classificacao){
-					case &quot;legislacao_obrigatorio&quot;: classificacao = &quot;Legislação/Obrigatório&quot;; break;
-					case &quot;projeto_implantacao&quot;: classificacao = &quot;Projeto/implantação&quot;; break;
-					case &quot;aprimoramento_profissional&quot;: classificacao = &quot;Aprimoramento profissional&quot;; break;
-					default: classificacao = &quot;&quot;;
+
+				if (classificacao == &quot;legislacao_obrigatorio&quot;) {
+					classificacao = &quot;Legislação/Obrigatório&quot;;
 				}
+				if (classificacao == &quot;projeto_implantacao&quot;) {
+					classificacao = &quot;Projeto/implantação&quot;;
+				}
+				if (classificacao == &quot;aprimoramento_profissional&quot;) {
+					classificacao = &quot;Aprimoramento profissional&quot;;
+				}
+				log.warn(&quot;%%%%%% classificacao: &quot; + classificacao);
 				fieldsPropor.push(participantesObj[i].nome + &quot;&quot;);
 				fieldsPropor.push(currentMat + &quot;&quot;);
-				fieldsPropor.push(solicitacao.getValue(0,&quot;departamento&quot;) + &quot;&quot;);
+				fieldsPropor.push(solicitacao.getValue(0, &quot;departamento&quot;) + &quot;&quot;);
 				fieldsPropor.push(treinamentos.getValue(index, &quot;treinamentoTbTreinamentos&quot;) + &quot;&quot;);
 				fieldsPropor.push(treinamentos.getValue(index, &quot;entidadeSugeridaTbTreinamentos&quot;) + &quot;&quot;);
-				fieldsPropor.push(solicitacao.getValue(0,&quot;anoVigencia&quot;) + &quot;&quot;);
+				fieldsPropor.push(solicitacao.getValue(0, &quot;anoVigencia&quot;) + &quot;&quot;);
 				fieldsPropor.push(treinamentos.getValue(index, &quot;cargaHorariaTbTreinamentos&quot;) + &quot;&quot;);
 				fieldsPropor.push(currentMat + &quot;&quot;);
 				fieldsPropor.push(numSolicPai + &quot;&quot;);
 				fieldsPropor.push(classificacao + &quot;&quot;);
+				fieldsPropor.push(responsavelArea + &quot;&quot;);
 				var cardData = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArrayArray&quot;);
 				for (var x = 0; x &lt; fieldsPropor.length; x++) {
 					var objField = servico.instantiate(&quot;net.java.dev.jaxb.array.StringArray&quot;);
@@ -1920,8 +1928,8 @@ function searchUserMat(mat) {
 
 function getTreinamentos(documentId) {
 	var c1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
-	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot; , documentId, documentId, ConstraintType.MUST);
-	var c3 = DatasetFactory.createConstraint(&quot;statsTbTreinamentos&quot;,&quot;REALIZADO&quot;, &quot;REALIZADO&quot;, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot;, documentId, documentId, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint(&quot;statsTbTreinamentos&quot;, &quot;REALIZADO&quot;, &quot;REALIZADO&quot;, ConstraintType.MUST);
 	var tablename = DatasetFactory.createConstraint(&quot;tablename&quot;, &quot;tbTreinamentos&quot;, &quot;tbTreinamentos&quot;, ConstraintType.MUST);
 	var treinamentos = DatasetFactory.getDataset(&quot;propor_treinamentos_anuais&quot;, null, [c1, c2, c3, tablename], null);
 	return treinamentos;
@@ -1929,10 +1937,11 @@ function getTreinamentos(documentId) {
 
 function getSolicitacao(documentId) {
 	var c1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
-	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot; , documentId, documentId, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&quot;documentid&quot;, documentId, documentId, ConstraintType.MUST);
 	var solicitacao = DatasetFactory.getDataset(&quot;propor_treinamentos_anuais&quot;, null, [c1, c2], null);
 	return solicitacao;
-}</eventDescription>
+}
+</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -1959,7 +1968,7 @@ function getSolicitacao(documentId) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>loginUserWS</propertyId>
-        <version>107</version>
+        <version>110</version>
       </advancedProcessPropertiesPK>
       <propertieValue>servico</propertieValue>
     </AdvancedProcessProperties>
@@ -1968,7 +1977,7 @@ function getSolicitacao(documentId) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>matUserWS</propertyId>
-        <version>107</version>
+        <version>110</version>
       </advancedProcessPropertiesPK>
       <propertieValue>0000</propertieValue>
     </AdvancedProcessProperties>
@@ -1977,7 +1986,7 @@ function getSolicitacao(documentId) {
         <companyId>1</companyId>
         <processId>TRN-002</processId>
         <propertyId>passwdUserWS</propertyId>
-        <version>107</version>
+        <version>110</version>
       </advancedProcessPropertiesPK>
       <propertieValue>fcea920f7412b5da7be0cf42b8c93759</propertieValue>
     </AdvancedProcessProperties>
@@ -2071,7 +2080,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2082,7 +2091,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>15</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2093,7 +2102,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2104,7 +2113,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2115,7 +2124,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>39</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2126,7 +2135,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>39</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2137,7 +2146,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>39</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2148,7 +2157,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2159,7 +2168,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>44</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2170,7 +2179,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2181,7 +2190,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>45</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2192,7 +2201,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>46</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2203,7 +2212,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>46</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2214,7 +2223,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>48</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2225,7 +2234,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>48</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2236,7 +2245,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2247,7 +2256,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>53</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2258,7 +2267,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>54</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2269,7 +2278,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>54</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2280,7 +2289,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>55</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2291,7 +2300,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>58</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2302,7 +2311,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>61</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2313,7 +2322,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>64</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2324,7 +2333,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>65</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2335,7 +2344,7 @@ function getSolicitacao(documentId) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <linkSequence>65</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2348,7 +2357,7 @@ function getSolicitacao(documentId) {
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <stateSequence>51</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
@@ -2364,7 +2373,7 @@ function getSolicitacao(documentId) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <stateSequence>0</stateSequence>
         <propertyName>loginUserWS</propertyName>
       </extendedPropertyFieldPK>
@@ -2377,7 +2386,7 @@ function getSolicitacao(documentId) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <stateSequence>0</stateSequence>
         <propertyName>matUserWS</propertyName>
       </extendedPropertyFieldPK>
@@ -2390,7 +2399,7 @@ function getSolicitacao(documentId) {
       <extendedPropertyFieldPK>
         <companyId>1</companyId>
         <processId>TRN-002</processId>
-        <version>107</version>
+        <version>110</version>
         <stateSequence>0</stateSequence>
         <propertyName>passwdUserWS</propertyName>
       </extendedPropertyFieldPK>
