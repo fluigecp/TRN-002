@@ -164,7 +164,7 @@
 													<th style="width: 10%" class="tableColumn text-center">Classificação <strong>*</strong></th>
 													<th style="width: 18%" class="tableColumn text-center">Justificativa <strong>*</strong></th>
 													<th style="width: 6%" class="tableColumn text-center">Quantidade de participantes <strong>*</strong></th>
-													<th style="width: 10%" class="tableColumn text-center">Matrícula e nome dos participantes 
+													<th style="width: 20%" class="tableColumn text-center">Matrícula e nome dos participantes 
 														<span class="fluigicon fluigicon-sm bs-docs-popover-hover fluigicon-exclamation-sign"
 														 data-toggle="popover" title="" data-content="Preencher este campo no formato Matrícula - Nome. Ao terminar de digitar a matrícula,
 														  pressione hífen(-) para digitar o nome. Ao preencher departamentos, favor preencher no padrão 00000 - Nome do Departamento." data-original-title="Popover title"></span> <strong>*</strong>
@@ -214,6 +214,17 @@
 														<div class="form-input">
 															<textarea name="matriculasNomesTbTreinamentosV" class="form-control expand matriculasNomesTbTreinamentosView" id="matriculasNomesTbTreinamentosV" readonly></textarea>
 															<input type="text" name="matriculasNomesTbTreinamentos" class="form-control expand matriculasNomesTbTreinamentos" placeholder="Matrícula - Nome" id="matriculasNomesTbTreinamentos">
+														</div>
+										
+														<div class="form-input participanteFluigContainer" style="margin-top: 10px;">
+																<input name="participanteFluig" id="participanteFluig" class="form-control" placeholder="Usuário Fluig?" type="zoom" data-zoom="{
+																	'displayKey':'colleagueName',
+																	'datasetId':'colleague',
+																	'fields':[
+																		{'field':'colleagueId', 'label':'Matrícula', 'standard':'true'},
+																		{'field':'colleagueName', 'label':'Nome'}
+																		]
+																}">
 														</div>
 													</td>
 													<td class="fs-v-align-middle">

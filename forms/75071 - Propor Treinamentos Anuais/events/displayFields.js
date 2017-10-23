@@ -194,6 +194,7 @@ function displayFields(form,customHTML) {
 		ocultaClasse('lixeiraTbTreinamentos');
 		ocultaClasse("matriculasNomesTbTreinamentos");
 		ocultaClasse("btn-insert");
+		ocultaClasse("participanteFluigContainer");
 	}
 
 	if ( modo == 'VIEW' ) {

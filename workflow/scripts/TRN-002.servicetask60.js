@@ -25,7 +25,7 @@ function servicetask60(attempt, message) {
 
 		var processId = "TRN-006";
 
-		var choosedState = 18;
+		var choosedState = 29;
 
 		var comments = "Solicitação aberta por: Nº " + numSolicPai;
 		log.warn("%%%%%% comments : " + comments);
@@ -53,7 +53,7 @@ function servicetask60(attempt, message) {
 
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
 			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic",
-			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea"
+			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea", "aberturaAutomatica"
 		];
 
 		var treinamentos = getTreinamentos(documentId);
@@ -93,6 +93,7 @@ function servicetask60(attempt, message) {
 				fieldsPropor.push(classificacao + "");
 				fieldsPropor.push(camposDescritor + "");
 				fieldsPropor.push(responsavelArea + "");
+				fieldsPropor.push("Sim");
 				var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
 				for (var x = 0; x < fieldsPropor.length; x++) {
 					var objField = servico.instantiate("net.java.dev.jaxb.array.StringArray");

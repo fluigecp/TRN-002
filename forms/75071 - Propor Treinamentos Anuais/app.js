@@ -2,10 +2,10 @@ var activity = 0,
 	modo = '',
 	data = new Date();
 
-$(window).load(function (){
+$(window).load(function () {
 	var filters = 'areaOrcamento,' + $('input#guardaArea').val();
 	var act = getAtividade();
-	if (act == 0 || act == 4) {	
+	if (act == 0 || act == 4) {
 		if ($('input#guardaArea').val() !== '' && modo !== 'VIEW') {
 			reloadZoomFilterValues('departamento', filters);
 			setAreaOrcamento();
@@ -27,12 +27,12 @@ $(window).load(function (){
 	/* DECLARA O OBJETO ZOOM DEPARTAMENTO */
 	function setAreaDepartamento() {
 		var $eventoNome = FLUIGC.autocomplete('input#departamento');
-        var $eventoTagData = {
-            segmentoExecutivo: $('input#guardaDpto').val()
-        };
-        $eventoNome.add($eventoTagData);
+		var $eventoTagData = {
+			segmentoExecutivo: $('input#guardaDpto').val()
+		};
+		$eventoNome.add($eventoTagData);
 	}
-	
+
 });
 
 $(document).ready(function () {
@@ -41,7 +41,7 @@ $(document).ready(function () {
 	console.log("Activity: ", activity);
 	console.log("Modo: ", modo);
 	$("#currentActivity").val(activity);
-	
+
 	/**
 	 * Funções de validações
 	 */
@@ -84,12 +84,12 @@ $(document).ready(function () {
 			$(".bootstrap-tagsinput input[type=text]").each(function () {
 				$(this).attr("placeholder", "");
 			});
-		} 
+		}
 
 		if (activity == 14) {
 			$("input[name='treinamentoAprovado']").attr('checked', false);
 			updateClassificacaoTreinamentosCountFields();
-		} 
+		}
 
 		if (activity == 18) {
 			$("input[name='treinamentoAprovadoGGR']").attr('checked', false);
@@ -115,7 +115,7 @@ $(document).ready(function () {
 			updateClassificacaoTreinamentosCountFields();
 		}
 
-		if ( activity > 35 ) {
+		if (activity > 35) {
 			updateClassificacaoTreinamentosCountFields();
 		}
 	}
@@ -142,7 +142,7 @@ $(document).ready(function () {
 			trigger: 'hover',
 			placement: 'auto'
 		});
-		
+
 		// adiciona um elemento na tabela e atualiza os campos de autocomplete
 		$('button#add-treinamento').click(function (event) {
 			var row = wdkAddChild('tbTreinamentos');
@@ -178,15 +178,15 @@ $(document).ready(function () {
 				var row = wdkAddChild('tbTreinamentos');
 				$("#statusTbTreinamentos___" + row).val("");
 				$("#cancelamentoJustificado___" + row).val("NAO");
-				$("#treinamentoTbTreinamentos___" + row).val( $("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="treinamentoTbTreinamentos___"]').val() );
-				$("#classificacaoTbTreinamentos___" + row).val( $("#classificacaoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="classificacaoTbTreinamentos___"]').val() );
-				$("#justificativaTbTreinamentos___" + row).val( $("#justificativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('textarea[name*="justificativaTbTreinamentos___"]').val() );
-				$("#qtdeParticipanteTbTreinamentos___" + row).val( $("#qtdeParticipanteTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="qtdeParticipanteTbTreinamentos___"]').val() );
-				$("#matriculasNomesTbTreinamentos___" + row).val( $("#matriculasNomesTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="matriculasNomesTbTreinamentos___"]').val() );
-				$("#entidadeSugeridaTbTreinamentos___" + row).val( $("#entidadeSugeridaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="entidadeSugeridaTbTreinamentos___"]').val() );
-				$("#mesPrevistoTbTreinamentos___" + row).val( $("#mesPrevistoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="mesPrevistoTbTreinamentos___"]').val() );
-				$("#estimativaTbTreinamentos___" + row).val( $("#estimativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="estimativaTbTreinamentos___"]').val() );
-				$("#cargaHorariaTbTreinamentos___" + row).val( $("#cargaHorariaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="cargaHorariaTbTreinamentos___"]').val() );
+				$("#treinamentoTbTreinamentos___" + row).val($("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="treinamentoTbTreinamentos___"]').val());
+				$("#classificacaoTbTreinamentos___" + row).val($("#classificacaoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="classificacaoTbTreinamentos___"]').val());
+				$("#justificativaTbTreinamentos___" + row).val($("#justificativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('textarea[name*="justificativaTbTreinamentos___"]').val());
+				$("#qtdeParticipanteTbTreinamentos___" + row).val($("#qtdeParticipanteTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="qtdeParticipanteTbTreinamentos___"]').val());
+				$("#matriculasNomesTbTreinamentos___" + row).val($("#matriculasNomesTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="matriculasNomesTbTreinamentos___"]').val());
+				$("#entidadeSugeridaTbTreinamentos___" + row).val($("#entidadeSugeridaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="entidadeSugeridaTbTreinamentos___"]').val());
+				$("#mesPrevistoTbTreinamentos___" + row).val($("#mesPrevistoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="mesPrevistoTbTreinamentos___"]').val());
+				$("#estimativaTbTreinamentos___" + row).val($("#estimativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="estimativaTbTreinamentos___"]').val());
+				$("#cargaHorariaTbTreinamentos___" + row).val($("#cargaHorariaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="cargaHorariaTbTreinamentos___"]').val());
 				$("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
 				$("#valorGastoTbTreinamentos___" + row).css({
 					"pointer-events": "none",
@@ -248,11 +248,11 @@ $(document).ready(function () {
 	}
 
 	if (activity == 24 || activity == 26 || activity == 30 || activity == 35) {
-		if ( modo != "VIEW" ) {
+		if (modo != "VIEW") {
 			calculaSaldo();
 			updateEstimativaTotal();
 		}
-		
+
 		if (activity == 24) {
 			$(".statusTbTreinamentos").each(function () {
 				var self = this;
@@ -290,15 +290,15 @@ $(document).ready(function () {
 			}
 		});
 
-		$("input[name='atualizarPlanejamento']").on('change', function(){
+		$("input[name='atualizarPlanejamento']").on('change', function () {
 			var _self = $(this);
-			if ( $(this).val() == "Não" ){
+			if ($(this).val() == "Não") {
 				FLUIGC.message.confirm({
 					message: 'Deseja realmente não atualizar o planejamento antes de finalizar?',
 					title: 'Finalizar Planejamento',
 					labelYes: 'Sim',
 					labelNo: 'Não'
-				}, function(result, el, ev) {
+				}, function (result, el, ev) {
 					if (!result) {
 						_self.attr('checked', false);
 					}
@@ -307,10 +307,10 @@ $(document).ready(function () {
 		});
 	}
 
-	if ( modo == 'VIEW' ) {
-		var currentVal = $( "option:selected", $("#departamento") );
-		$("#departamento > option").each(function() {
-			if ( this.value != currentVal.val() ){
+	if (modo == 'VIEW') {
+		var currentVal = $("option:selected", $("#departamento"));
+		$("#departamento > option").each(function () {
+			if (this.value != currentVal.val()) {
 				$(this).remove();
 			}
 		});
@@ -522,7 +522,7 @@ function updateAutoCompleteWithLimit(element) {
 	autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId, {
 		maxTags: maxTag,
 		onMaxTags: function (item, tag) {
-			if ($(element).val() != ""){
+			if ($(element).val() != "") {
 				if (!($(".alert-danger").length > 0)) {
 					FLUIGC.toast({
 						message: 'Limite de participantes atingido.',
@@ -538,7 +538,7 @@ function updateAutoCompleteWithLimit(element) {
 	 * @description Máscara para o campo de Nome(apenas letras) - Matrícula(apenas número).
 	 * 
 	 */
-	autoComplete.input().on("blur", function(){
+	autoComplete.input().on("blur", function () {
 		$(".alert-danger").remove();
 	});
 	autoComplete.input().on("keypress", function (e) {
@@ -680,23 +680,23 @@ function mostraHistorico() {
 //Fim do histórico
 
 // método do campo zoom de departamentos
-function setSelectedZoomItem(selectedItem) {  
-	if (selectedItem.inputName == 'departamento') { 
+function setSelectedZoomItem(selectedItem) {
+	if (selectedItem.inputName == 'departamento') {
 		if (event.type != 'load') {
 			$("#responsavelDepartamento").val(selectedItem.responsavel);
 			$("#matResponsavelDepartamento").val(selectedItem.matResponsavel);
 			$("#siglaDepartamento").val(selectedItem.sigla);
-			$("#guardaDpto").val( selectedItem.segmentoExecutivo );
+			$("#guardaDpto").val(selectedItem.segmentoExecutivo);
 			$("#numeroOrcamentarioDepartamento").val(selectedItem.numeroOrcamentario);
 			//Verifica se existe ficha aberta para o segmento/departamento selecionado.
-			var existeDepartamento = hasDepartamentoPlanejamentoThisYear(selectedItem.segmentoExecutivo,$("#anoVigencia").val());
+			var existeDepartamento = hasDepartamentoPlanejamentoThisYear(selectedItem.segmentoExecutivo, $("#anoVigencia").val());
 			//Caso exista, é disparado um aviso e limpa os campos.
-			if ( existeDepartamento ) {
+			if (existeDepartamento) {
 				FLUIGC.message.alert({
 					message: 'Já existe um planejamento de treinamentos anuais para este Segmento.',
 					title: selectedItem.segmentoExecutivo,
 					label: 'OK'
-				}, function(el, ev) {
+				}, function (el, ev) {
 					$('[data-field-name=departamento] [data-role=remove]').trigger('click');
 					$("#responsavelDepartamento").val("");
 					$("#matResponsavelDepartamento").val("");
@@ -704,50 +704,63 @@ function setSelectedZoomItem(selectedItem) {
 					$("#numeroOrcamentarioDepartamento").val("");
 				});
 			}
-		}	
+		}
 	}
 
 	if (selectedItem.inputName == 'areaOrcamento') {
 		if (event.type != 'load') {
-			$("#guardaArea").val( selectedItem.areaOrcamento );
+			$("#guardaArea").val(selectedItem.areaOrcamento);
 			/**
 			 * Seta o filtro para o zoom de departamentos, para filtrar todos os segmentos/departamentos
 			 * relacionados a área selecionada especificamente.
 			 */
-			reloadZoomFilterValues( 'departamento','areaOrcamento,' + $("#guardaArea").val() );
+			reloadZoomFilterValues('departamento', 'areaOrcamento,' + $("#guardaArea").val());
 		}
-		$('[data-field-name="areaOrcamento"] [data-role=remove]').on('click', function(){
+		$('[data-field-name="areaOrcamento"] [data-role=remove]').on('click', function () {
 			cleanAllFieldsRelatedArea();
 		});
 	}
-	/**
-	 * @description Limpa todos os campos de controle e seta o filtro do campo zoom de departamentos para não retornar nenhum valor.
-	 */
-	function cleanAllFieldsRelatedArea() {
-		$('[data-field-name="departamento"] [data-role=remove]').trigger('click');
-		$("#responsavelDepartamento").val("");
-		$("#matResponsavelDepartamento").val("");
-		$("#siglaDepartamento").val("");
-		$("#numeroOrcamentarioDepartamento").val("");
-		$("#guardaArea").val("");
-		reloadZoomFilterValues( 'departamento','areaOrcamento,areaOrcamento' );
+
+	if (selectedItem.inputName.indexOf("participanteFluig") !== -1) {
+		var zoomFieldName = selectedItem.inputName;
+		var $participantesFieldId = $("input[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
+		var zoomField = FLUIGC.autocomplete("#" + zoomFieldName);
+		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
+		participantes.add(tagData);
+		zoomField.removeAll();
 	}
 }
+/**
+ * @description Limpa todos os campos de controle e seta o filtro do campo zoom de departamentos para não retornar nenhum valor.
+ */
+function cleanAllFieldsRelatedArea() {
+	$('[data-field-name="departamento"] [data-role=remove]').trigger('click');
+	$("#responsavelDepartamento").val("");
+	$("#matResponsavelDepartamento").val("");
+	$("#siglaDepartamento").val("");
+	$("#numeroOrcamentarioDepartamento").val("");
+	$("#guardaArea").val("");
+	reloadZoomFilterValues('departamento', 'areaOrcamento,areaOrcamento');
+}
+
 
 function updateClassificacaoTreinamentosCountFields() {
 	var treinamentos = $("#treinamentos table tbody tr.tableBodyRow:not(:first-child)");
-	var qtdeAprimoramento = 0, qtdeLegislacao = 0, qtdeProjeto = 0;
-	$(treinamentos).each(function( i , e ){
+	var qtdeAprimoramento = 0,
+		qtdeLegislacao = 0,
+		qtdeProjeto = 0;
+	$(treinamentos).each(function (i, e) {
 		var classificacao = $(e).find("select[name*='classificacaoTbTreinamentos___']").val();
 		var status = $(e).find("select[name*='statsTbTreinamentos___']").val();
-		if ( status != "CANCELADO") {
-			if ( classificacao == "legislacao_obrigatorio" ) {
+		if (status != "CANCELADO") {
+			if (classificacao == "legislacao_obrigatorio") {
 				qtdeLegislacao++;
 			}
-			if ( classificacao == "projeto_implantacao" ) {
+			if (classificacao == "projeto_implantacao") {
 				qtdeProjeto++;
 			}
-			if ( classificacao == "aprimoramento_profissional" ) {
+			if (classificacao == "aprimoramento_profissional") {
 				qtdeAprimoramento++;
 			}
 		}
@@ -823,7 +836,7 @@ function hasDepartamentoPlanejamentoThisYear(departamento, ano) {
 	var c3 = DatasetFactory.createConstraint("anoVigencia", ano, ano, ConstraintType.MUST);
 	var c4 = DatasetFactory.createConstraint("processState", "CANCELADO", "CANCELADO", ConstraintType.MUST_NOT);
 	var c5 = DatasetFactory.createConstraint("numProcess", getProcess(), getProcess(), ConstraintType.MUST_NOT);
-	var dataset = DatasetFactory.getDataset('propor_treinamentos_anuais', null, [c1, c2, c3, c4,c5], ['documentid']);
+	var dataset = DatasetFactory.getDataset('propor_treinamentos_anuais', null, [c1, c2, c3, c4, c5], ['documentid']);
 	if (dataset.values.length > 0) {
 		return true;
 
