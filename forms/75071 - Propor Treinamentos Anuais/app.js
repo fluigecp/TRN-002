@@ -564,7 +564,7 @@ function updateAutoCompleteWithLimit(element) {
 		}
 	});
 
-	$.each($(".bootstrap-tagsinput"), function () {
+	$.each($(".matriculasNomesTbTreinamentosContainer .bootstrap-tagsinput"), function () {
 		$(this).next().css("display", "none");
 		if ($(this).prev().attr('type') == "hidden") {
 			$(this).css("display", "none");
@@ -723,7 +723,7 @@ function setSelectedZoomItem(selectedItem) {
 
 	if (selectedItem.inputName.indexOf("participanteFluig") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("input[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var $participantesFieldId = $("select[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var zoomField = FLUIGC.autocomplete("#" + zoomFieldName);
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
