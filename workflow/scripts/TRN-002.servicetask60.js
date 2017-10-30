@@ -52,7 +52,7 @@ function servicetask60(attempt, message) {
 		log.warn("%%%%%% colleagueIds");
 
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
-			"instituicao", "dataRealizacao", "cargaHoraria", "matResponsavelSolic",
+			"instituicao", "dataRealizacao", "cargaHoraria", "avaliadorMat",
 			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea", "aberturaAutomatica"
 		];
 

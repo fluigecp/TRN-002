@@ -42377,7 +42377,7 @@
        <int>1</int>
       </void>
       <void property="processDescription">
-       <string>Registrar atendimento nutrição - (Individual)</string>
+       <string>Registrar Atendimento Nutrição (Individual)</string>
       </void>
       <void property="processId">
        <string>MED-002</string>
