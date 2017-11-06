@@ -697,7 +697,7 @@ function setSelectedZoomItem(selectedItem) {
 					title: selectedItem.segmentoExecutivo,
 					label: 'OK'
 				}, function (el, ev) {
-					$('[data-field-name=departamento] [data-role=remove]').trigger('click');
+					$('[data-field-name=departamento] [data-role=remove], [data-field-name=departamento] .select2-selection__choice__remove').trigger('click');
 					$("#responsavelDepartamento").val("");
 					$("#matResponsavelDepartamento").val("");
 					$("#siglaDepartamento").val("");
@@ -729,6 +729,7 @@ function setSelectedZoomItem(selectedItem) {
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
 		participantes.add(tagData);
 		zoomField.removeAll();
+		zoomField.destroy();
 	}
 }
 /**
