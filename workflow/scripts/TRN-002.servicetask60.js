@@ -52,7 +52,7 @@ function servicetask60(attempt, message) {
 		log.warn("%%%%%% colleagueIds");
 
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
-			"instituicao", "dataRealizacao", "cargaHoraria", "avaliadorMat",
+			"instituicao", "cargaHoraria", "avaliadorMat",
 			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea", "aberturaAutomatica"
 		];
 
@@ -73,7 +73,6 @@ function servicetask60(attempt, message) {
 				fieldsRequisicaoWithDepartamento.push( solicitacao.getValue(0, "departamento") + "" );
 				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "treinamentoTbTreinamentos") + "" );
 				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "" );
-				fieldsRequisicaoWithDepartamento.push( solicitacao.getValue(0, "anoVigencia") + "" );
 				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "cargaHorariaTbTreinamentos")  + "" );
 				fieldsRequisicaoWithDepartamento.push( numSolicPai + "" );
 				fieldsRequisicaoWithDepartamento.push( classificacao + "" );
