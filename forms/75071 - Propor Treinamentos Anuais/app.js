@@ -723,7 +723,7 @@ function setSelectedZoomItem(selectedItem) {
 
 	if (selectedItem.inputName.indexOf("participanteFluig") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("select[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var zoomField = FLUIGC.autocomplete("#" + zoomFieldName);
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
