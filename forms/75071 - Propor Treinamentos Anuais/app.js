@@ -236,6 +236,14 @@ $(document).ready(function () {
 
 		//  Deletar um participante na lista de presença do treinamento
 		$('div#treinamentos').on('mousedown', 'i.fluigicon-trash', function () {
+			var indexItem = $(this);
+			var $varFieldRef = $(this).closest(".tableBodyRow").find("[name*=treinamentoTbTreinamentos___]");
+			var fieldRefName = $varFieldRef.attr("name");
+			var indexFieldRef = fieldRefName.substr(fieldRefName.indexOf("___"));
+			$("input[name*=" + indexFieldRef + "] , select[name*=" + indexFieldRef + "], textarea[name*=" + indexFieldRef + "]").each(function() {
+				$(this).remove();
+			});
+
 			fnWdkRemoveChild(this);
 			// Atualizar somatórias
 			updateQtdeTotal();
