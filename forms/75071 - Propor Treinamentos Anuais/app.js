@@ -267,6 +267,7 @@ $(document).ready(function () {
 				if ($(this).val() == "CANCELADO" || $(this).val() == "REALIZADO") {
 					disableAutoCompleteField($(self));
 					$(self).closest(".tableBodyRow").find(".btn-delete").remove();
+					$(self).closest(".tableBodyRow").find(".matriculasNomesTbTreinamentosView").show();
 				}
 			});
 			if ($("#previous_activity").val() == 35) {
@@ -592,7 +593,7 @@ function disableAutoCompleteField(element) {
 		$(element).closest(".tableBodyRow").find(".matriculasNomesTbTreinamentosView").text(textWithSpace);
 		$(this).remove();
 	});*/
-	$(".bootstrap-tagsinput").remove();
+	$(element).closest(".tableBodyRow").find(".bootstrap-tagsinput, .participanteFluigContainer").remove();
 }
 // Calcula saldo
 
