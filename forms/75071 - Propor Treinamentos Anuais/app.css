@@ -2,3 +2,13 @@
     font-weight: normal !important;
     cursor: pointer;
 }
+
+@media screen and (min-width: 792px){
+    .insert-overflow{
+        overflow-x: auto;
+        margin-bottom: 25px;
+    }
+    .tb-treinamentos-width{
+        width: 2000px !important;
+    }
+}
