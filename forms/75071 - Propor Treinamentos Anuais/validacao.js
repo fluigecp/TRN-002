@@ -35,6 +35,17 @@ function validaCampos(atividade, proximaAtividade) {
 		if (regCount < 1) {
 			addHasFree('obsHistorico');
 		}
+		var tagControlFields = $("input[name*=tagControl___]");
+		var errorString = "";
+		$.each(tagControlFields, function (indexInArray, valueOfElement) { 
+			if ( getValue( valueOfElement.name ) != "Sim" ) {
+				var treinamentoName = $("#" + valueOfElement.name).closest(".tableBodyRow").find("[name*=treinamentoTbTreinamentos___]").val();
+				errorString += "Número de participantes insuficientes no treinamento " + treinamentoName + "\n";
+			}	 
+		});
+		if ( errorString != "" ) {
+			throw(errorString);
+		}
 	}
 
 	if ( atividade == 14 ) {

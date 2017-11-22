@@ -33,6 +33,34 @@ $(window).load(function () {
 		$eventoNome.add($eventoTagData);
 	}
 
+	if ( act == 12 || act == 24 ) {
+		$(document).on("fluig.autocomplete.itemAdded fluig.autocomplete.itemRemoved", function (item) {
+			var participantesIdField = item.target.id;
+			participantesIdField = participantesIdField.indexOf("participanteFluig") == -1 ? participantesIdField : "";
+			if ( participantesIdField != "" ) {
+				var myTagParticipantes = FLUIGC.autocomplete("#" + participantesIdField);
+				var myTagParticipantesArray = myTagParticipantes.items();
+				var totalParticipantes = $( "[name=" + participantesIdField + "]").closest(".tableBodyRow").find(".qtdeParticipanteTbTreinamentos").val();
+				var participantesObj = filterParticipantesObj(myTagParticipantesArray);
+				var hasDepartamento = checkIfHasDepartamento(participantesObj);
+				var $tagControl = $( "[name=" + participantesIdField + "]").closest(".tableBodyRow").find("[name*=tagControl___]");
+				console.log("tagControl: ", $tagControl);
+				if ( hasDepartamento ) {
+					$tagControl.val("Sim");
+					console.log("Departamento added, passed!");
+				} else {
+					if ( myTagParticipantesArray.length < totalParticipantes ) {
+						$tagControl.val("Não");
+						console.log("Adicionar mais participantes!");
+					} else {
+						$tagControl.val("Sim");
+						console.log("passed!");
+					}
+				}
+			}
+        });
+	}
+
 });
 
 $(document).ready(function () {
@@ -158,9 +186,10 @@ $(document).ready(function () {
 				"pointer-events": "none",
 				"touch-action": "none"
 			});
-			$(".qtdeParticipanteTbTreinamentos").each(function () {
+			/*$(".qtdeParticipanteTbTreinamentos:not(:first)").each(function () {
 				updateAutoCompleteWithLimit(this);
-			});
+			});*/
+			updateAutoCompleteWithLimit( $(" #qtdeParticipanteTbTreinamentos___" + row ) );
 			$(".statusTbTreinamentos").each(function () {
 				var currentStatus = $(this);
 				if (currentStatus.val() == "REALIZADO" || currentStatus.val() == "CANCELADO")
@@ -176,17 +205,19 @@ $(document).ready(function () {
 			var regCount = $("#treinamentos table tbody tr.tableBodyRow:not(:first)").length;
 			if (regCount > 0) {
 				var row = wdkAddChild('tbTreinamentos');
+				var linhaAnterior = $("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev();
 				$("#statusTbTreinamentos___" + row).val("");
 				$("#cancelamentoJustificado___" + row).val("NAO");
-				$("#treinamentoTbTreinamentos___" + row).val($("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="treinamentoTbTreinamentos___"]').val());
-				$("#classificacaoTbTreinamentos___" + row).val($("#classificacaoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="classificacaoTbTreinamentos___"]').val());
-				$("#justificativaTbTreinamentos___" + row).val($("#justificativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('textarea[name*="justificativaTbTreinamentos___"]').val());
-				$("#qtdeParticipanteTbTreinamentos___" + row).val($("#qtdeParticipanteTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="qtdeParticipanteTbTreinamentos___"]').val());
-				$("#matriculasNomesTbTreinamentos___" + row).val($("#matriculasNomesTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="matriculasNomesTbTreinamentos___"]').val());
-				$("#entidadeSugeridaTbTreinamentos___" + row).val($("#entidadeSugeridaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="entidadeSugeridaTbTreinamentos___"]').val());
-				$("#mesPrevistoTbTreinamentos___" + row).val($("#mesPrevistoTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('select[name*="mesPrevistoTbTreinamentos___"]').val());
-				$("#estimativaTbTreinamentos___" + row).val($("#estimativaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="estimativaTbTreinamentos___"]').val());
-				$("#cargaHorariaTbTreinamentos___" + row).val($("#cargaHorariaTbTreinamentos___" + row).closest(".tableBodyRow").prev().find('input[name*="cargaHorariaTbTreinamentos___"]').val());
+				$("#treinamentoTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="treinamentoTbTreinamentos___"]').val() );
+				$("#classificacaoTbTreinamentos___" + row).val( linhaAnterior.find('select[name*="classificacaoTbTreinamentos___"]').val() );
+				$("#justificativaTbTreinamentos___" + row).val( linhaAnterior.find('textarea[name*="justificativaTbTreinamentos___"]').val() );
+				$("#qtdeParticipanteTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="qtdeParticipanteTbTreinamentos___"]').val() );
+				var auto = updateAutoCompleteWithLimit( $(" #qtdeParticipanteTbTreinamentos___" + row ) );
+				auto.add( linhaAnterior.find('input[name*="matriculasNomesTbTreinamentos___"]').val() );
+				$("#entidadeSugeridaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="entidadeSugeridaTbTreinamentos___"]').val() );
+				$("#mesPrevistoTbTreinamentos___" + row).val( linhaAnterior.find('select[name*="mesPrevistoTbTreinamentos___"]').val() );
+				$("#estimativaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="estimativaTbTreinamentos___"]').val() );
+				$("#cargaHorariaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="cargaHorariaTbTreinamentos___"]').val() );
 				$("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
 				$("#valorGastoTbTreinamentos___" + row).css({
 					"pointer-events": "none",
@@ -196,9 +227,6 @@ $(document).ready(function () {
 				$("#statsTbTreinamentos___" + row).css({
 					"pointer-events": "none",
 					"touch-action": "none"
-				});
-				$(".qtdeParticipanteTbTreinamentos").each(function () {
-					updateAutoCompleteWithLimit(this);
 				});
 				$(".statusTbTreinamentos").each(function () {
 					var currentStatus = $(this);
@@ -217,15 +245,22 @@ $(document).ready(function () {
 			}
 		});
 
+		
+
 		/**
 		 *  @description Trava valores negativos no campo de quantidade de participantes e atualiza 
 		 *  quantidade máxima de tags no campo seguinte (participantes)
 		 */
 		$('div#treinamentos').on('change', 'tbody input[name^="qtdeParticipanteTbTreinamentos___"]', function () {
+			var itens, auto, $participantesField;
 			if (parseInt(this.value) < 0)
 				this.value = 0;
 			updateQtdeTotal();
-			updateAutoCompleteWithLimit(this);
+			$participantesField = $(this).closest(".tableBodyRow").find("[name*=matriculasNomesTbTreinamentos___]");
+			itens = $participantesField.val();
+			$participantesField.val("");
+			auto = updateAutoCompleteWithLimit(this);
+			auto.add(itens);
 		});
 
 		$('div#treinamentos').on('change', 'tbody input[name^="cargaHorariaTbTreinamentos___"]', function () {
@@ -528,7 +563,7 @@ function updateAutoCompleteWithLimit(element) {
 	var maxTag = $(element).val() == "" ? "0" : $(element).val();
 	var autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId);
 	autoComplete.destroy();
-	autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId, {
+	var autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId, {
 		maxTags: maxTag,
 		onMaxTags: function (item, tag) {
 			if ($(element).val() != "") {
@@ -579,6 +614,7 @@ function updateAutoCompleteWithLimit(element) {
 			$(this).css("display", "none");
 		}
 	});
+	return autoComplete;
 }
 
 /**
@@ -668,6 +704,36 @@ function atualizaEstimativaStatus(combo) {
 		updateGastoTotal();
 	}, 300);
 }
+
+/**
+ * Verifica se existe departamentos na lista de participantes
+ * @param {Object} participantesObj 
+ * @returns {Boolean} true, caso haja departamento.
+ */
+function checkIfHasDepartamento(participantesObj) {
+	for (var i = 0; i < participantesObj.length; i++) {
+		if ( participantesObj[i].matricula == "00000" ) {
+			return true;
+		}
+	}
+	return false;
+};
+
+/**
+ * retorna um array de objetos com nome e matricula de todos os participantes.
+ * @param {string} strArray - Parâmetro array com todos os participantes. 
+ */
+function filterParticipantesObj(strArray) {
+	var participantesObj = [];
+	for (var i = 0; i < strArray.length; i++) {
+		participantesObj.push({
+			nome: strArray[i].substring(strArray[i].indexOf("-") + 2),
+			matricula: strArray[i].substring(0, strArray[i].indexOf("-") - 1)
+		});
+	}
+	return participantesObj;
+};
+
 
 //Histórico
 
