@@ -126,6 +126,7 @@ function servicetask60(attempt, message) {
 						completeTask, attachments, cardData, appointment, managerMode);
 				}
 		}
+		hAPI.setCardValue( treinamentos.getValue(index,"hasAvaliacaoReacaoName"), "SIM");
 	}
 
 
@@ -195,8 +196,9 @@ function getTreinamentos(documentId) {
 	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
 	var c2 = DatasetFactory.createConstraint("documentid", documentId, documentId, ConstraintType.MUST);
 	var c3 = DatasetFactory.createConstraint("statsTbTreinamentos", "REALIZADO", "REALIZADO", ConstraintType.MUST);
+	var c4 = DatasetFactory.createConstraint("hasAvaliacaoReacao", "NAO", "NAO", ConstraintType.MUST);
 	var tablename = DatasetFactory.createConstraint("tablename", "tbTreinamentos", "tbTreinamentos", ConstraintType.MUST);
-	var treinamentos = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2, c3, tablename], null);
+	var treinamentos = DatasetFactory.getDataset("propor_treinamentos_anuais", null, [c1, c2, c3, c4, tablename], null);
 	return treinamentos;
 }
 
