@@ -10,236 +10,6 @@
    </array>
   </void>
   <void method="put">
-   <string>camposFormulario, documentoId = 27551</string>
-   <array class="java.lang.String" length="75">
-    <void index="0">
-     <string>aberturaAutomatica</string>
-    </void>
-    <void index="1">
-     <string>aprovadorMat</string>
-    </void>
-    <void index="2">
-     <string>aprovadorTreinamento</string>
-    </void>
-    <void index="3">
-     <string>aprovarAvaliacao</string>
-    </void>
-    <void index="4">
-     <string>area</string>
-    </void>
-    <void index="5">
-     <string>avaliadorMat</string>
-    </void>
-    <void index="6">
-     <string>avaliadorTreinamento</string>
-    </void>
-    <void index="7">
-     <string>campoDescritor</string>
-    </void>
-    <void index="8">
-     <string>cargaHoraria</string>
-    </void>
-    <void index="9">
-     <string>classificacaoCurso</string>
-    </void>
-    <void index="10">
-     <string>cursoTreinamento</string>
-    </void>
-    <void index="11">
-     <string>custom_0</string>
-    </void>
-    <void index="12">
-     <string>custom_1</string>
-    </void>
-    <void index="13">
-     <string>custom_10</string>
-    </void>
-    <void index="14">
-     <string>custom_11</string>
-    </void>
-    <void index="15">
-     <string>custom_12</string>
-    </void>
-    <void index="16">
-     <string>custom_13</string>
-    </void>
-    <void index="17">
-     <string>custom_14</string>
-    </void>
-    <void index="18">
-     <string>custom_15</string>
-    </void>
-    <void index="19">
-     <string>custom_16</string>
-    </void>
-    <void index="20">
-     <string>custom_17</string>
-    </void>
-    <void index="21">
-     <string>custom_18</string>
-    </void>
-    <void index="22">
-     <string>custom_19</string>
-    </void>
-    <void index="23">
-     <string>custom_2</string>
-    </void>
-    <void index="24">
-     <string>custom_20</string>
-    </void>
-    <void index="25">
-     <string>custom_21</string>
-    </void>
-    <void index="26">
-     <string>custom_22</string>
-    </void>
-    <void index="27">
-     <string>custom_23</string>
-    </void>
-    <void index="28">
-     <string>custom_24</string>
-    </void>
-    <void index="29">
-     <string>custom_25</string>
-    </void>
-    <void index="30">
-     <string>custom_26</string>
-    </void>
-    <void index="31">
-     <string>custom_27</string>
-    </void>
-    <void index="32">
-     <string>custom_28</string>
-    </void>
-    <void index="33">
-     <string>custom_29</string>
-    </void>
-    <void index="34">
-     <string>custom_3</string>
-    </void>
-    <void index="35">
-     <string>custom_4</string>
-    </void>
-    <void index="36">
-     <string>custom_5</string>
-    </void>
-    <void index="37">
-     <string>custom_6</string>
-    </void>
-    <void index="38">
-     <string>custom_7</string>
-    </void>
-    <void index="39">
-     <string>custom_8</string>
-    </void>
-    <void index="40">
-     <string>custom_9</string>
-    </void>
-    <void index="41">
-     <string>dataAprovacao</string>
-    </void>
-    <void index="42">
-     <string>dataRealizacao</string>
-    </void>
-    <void index="43">
-     <string>fato_0</string>
-    </void>
-    <void index="44">
-     <string>fato_1</string>
-    </void>
-    <void index="45">
-     <string>fato_2</string>
-    </void>
-    <void index="46">
-     <string>fato_3</string>
-    </void>
-    <void index="47">
-     <string>fato_4</string>
-    </void>
-    <void index="48">
-     <string>fato_5</string>
-    </void>
-    <void index="49">
-     <string>fato_6</string>
-    </void>
-    <void index="50">
-     <string>fato_7</string>
-    </void>
-    <void index="51">
-     <string>fato_8</string>
-    </void>
-    <void index="52">
-     <string>fato_9</string>
-    </void>
-    <void index="53">
-     <string>historico</string>
-    </void>
-    <void index="54">
-     <string>instituicao</string>
-    </void>
-    <void index="55">
-     <string>matResponsavelArea</string>
-    </void>
-    <void index="56">
-     <string>matricula</string>
-    </void>
-    <void index="57">
-     <string>nomeParticipante</string>
-    </void>
-    <void index="58">
-     <string>numProcess</string>
-    </void>
-    <void index="59">
-     <string>numSolicTreinamento</string>
-    </void>
-    <void index="60">
-     <string>obsHistorico</string>
-    </void>
-    <void index="61">
-     <string>pergunta1</string>
-    </void>
-    <void index="62">
-     <string>pergunta2</string>
-    </void>
-    <void index="63">
-     <string>pergunta3_cargaHoraria</string>
-    </void>
-    <void index="64">
-     <string>pergunta3_local</string>
-    </void>
-    <void index="65">
-     <string>pergunta3_material</string>
-    </void>
-    <void index="66">
-     <string>pergunta3_organizacao</string>
-    </void>
-    <void index="67">
-     <string>pergunta4_comunicacao</string>
-    </void>
-    <void index="68">
-     <string>pergunta4_didatica</string>
-    </void>
-    <void index="69">
-     <string>pergunta4_dominio</string>
-    </void>
-    <void index="70">
-     <string>pergunta4_habilidade</string>
-    </void>
-    <void index="71">
-     <string>pergunta4_relacionamento</string>
-    </void>
-    <void index="72">
-     <string>pergunta5</string>
-    </void>
-    <void index="73">
-     <string>ultimaAtualizacao</string>
-    </void>
-    <void index="74">
-     <string>usuarioParticipou</string>
-    </void>
-   </array>
-  </void>
-  <void method="put">
    <string>mecanismoGrupo</string>
    <object class="java.util.ArrayList">
     <void method="add">
@@ -1282,6 +1052,26 @@
       </void>
      </object>
     </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Responsáveis pela segunda fase de aprovação da avaliação de treinamento de eficácia.</string>
+      </void>
+      <void property="groupId">
+       <string>WK_TRN-007_Aprovar_Avaliacao</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Responsáveis pela segunda fase de aprovação da avaliação de treinamento de reação.</string>
+      </void>
+      <void property="groupId">
+       <string>WK_TRN-006_Aprovar_Avaliacao</string>
+      </void>
+     </object>
+    </void>
    </object>
   </void>
   <void method="put">
@@ -1558,6 +1348,19 @@
       </void>
       <void property="processId">
        <string>FLUIGADHOC</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>GETFORM</string>
+      </void>
+      <void property="processId">
+       <string>GETFORM</string>
       </void>
      </object>
     </void>
