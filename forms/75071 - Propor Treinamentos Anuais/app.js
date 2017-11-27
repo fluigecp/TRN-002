@@ -176,6 +176,7 @@ $(document).ready(function () {
 			var row = wdkAddChild('tbTreinamentos');
 			$("#statusTbTreinamentos___" + row).val("");
 			$("#cancelamentoJustificado___" + row).val("NAO");
+			$("#hasAvaliacaoReacao___" + row).val("NAO");
 			$("#hasAvaliacaoReacaoName___" + row).val("hasAvaliacaoReacao___" + row);
 			$("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
 			$("#valorGastoTbTreinamentos___" + row).css({
@@ -209,6 +210,7 @@ $(document).ready(function () {
 				var linhaAnterior = $("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev();
 				$("#statusTbTreinamentos___" + row).val("");
 				$("#cancelamentoJustificado___" + row).val("NAO");
+				$("#hasAvaliacaoReacao___" + row).val("NAO");
 				$("#hasAvaliacaoReacaoName___" + row).val( "hasAvaliacaoReacao___" + row );
 				$("#treinamentoTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="treinamentoTbTreinamentos___"]').val() );
 				$("#classificacaoTbTreinamentos___" + row).val( linhaAnterior.find('select[name*="classificacaoTbTreinamentos___"]').val() );

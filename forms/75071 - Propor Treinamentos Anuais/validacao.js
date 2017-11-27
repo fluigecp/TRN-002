@@ -96,20 +96,26 @@ function validaCampos(atividade, proximaAtividade) {
 
 	if ( atividade == 35 ) {
 		addHasFreeTable('input','valorGastoTbTreinamentos', 1);
-		addHasFree("atualizarPlanejamento");
 		var atualizarPlanejamento = $("input[name='atualizarPlanejamento']:checked");
 		var treinamentosCancelados = [];
-		$('.statusTbTreinamentos').each(function () {
+		var blankStats = false;
+		$('.statusTbTreinamentos:not(:first)').each(function () {
 			// Obtem os treinamentos que foram cancelados e ainda não foram justificados
 			if ( $(this).val() == "CANCELADO" && $(this).next().val() == 'NAO') {
 				var treinamentoCancelado = $(this).closest(".tableBodyRow").find("input[name*='treinamentoTbTreinamentos___']").val();
-				var self = this;
 				if ($('#obsHistorico').val() != "")
-					$(self).next().val('SIM');
+					$(this).next().val('SIM');
 				treinamentosCancelados.push(treinamentoCancelado);
+			}
+
+			if ( $(this).val() == "" ) {
+				blankStats = true;
 			}
 		});
 
+		if (!blankStats) {
+			addHasFree("atualizarPlanejamento");
+		}
 		/* Caso exista treinamentos cancelados e não justificados, impossibilitar a saida
 		 da atividade sem justificativa no campo de observações. */
 
