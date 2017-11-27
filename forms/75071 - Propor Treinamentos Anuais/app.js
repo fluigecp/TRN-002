@@ -647,8 +647,8 @@ function calculaSaldo() {
 		fieldValorGastoValue = $(this).val();
 		fieldValorEstimativaValue = converteParaFloat($(this).closest(".fs-v-align-middle").prev().find('input').val());
 		fieldValorEstimativaValue = fieldStatusValue == "CANCELADO" ? 0 : fieldValorEstimativaValue;
-		somatoriaDespesas += fieldValorGastoValue == "0,00" || fieldValorGastoValue == "" ? fieldValorEstimativaValue :
-			converteParaFloat(fieldValorGastoValue);
+		somatoriaDespesas += ( fieldValorGastoValue == "0,00" || fieldValorGastoValue == "" ) && fieldStatusValue != "REALIZADO" ?
+		 						fieldValorEstimativaValue : converteParaFloat(fieldValorGastoValue);
 	});
 	var valorOrcamento = converteParaFloat($("#orcamento").val());
 	var saldo = valorOrcamento - somatoriaDespesas;
