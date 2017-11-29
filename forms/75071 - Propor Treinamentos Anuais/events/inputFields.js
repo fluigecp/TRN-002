@@ -5,8 +5,8 @@ function inputFields(form) {
     form.setValue('campoDescritor', form.getValue('departamento'));
     form.setValue('custom_0', form.getValue('areaOrcamento'));
     form.setValue('custom_1', form.getValue('departamento'));
-
-    if ( activity != 0 ) {
+    form.setValue("numProcess", numProcess);
+/*     if ( activity != 0 ) {
         form.setValue("numProcess", numProcess);
     }
 
@@ -16,29 +16,36 @@ function inputFields(form) {
                     form.setValue( 'fato_0', parseInt( form.getValue('totalQtdParticipantes') ) );
                     form.setValue( 'fato_1', converteParaFloat( form.getValue('totalEstimativa') ) );
                     form.setValue( 'fato_2', converteParaFloat( form.getValue('totalCargaHoraria') ) );
-                    form.setValue( 'fato_4', converteParaFloat( form.getValue('orcamento') ) );
+                    form.setValue( 'fato_8', converteParaFloat( form.getValue('orcamento') ) );
                     break;
             case 18:
                     form.setValue( 'fato_0', parseInt( form.getValue('totalQtdParticipantes') ) );
                     form.setValue( 'fato_1', converteParaFloat( form.getValue('totalEstimativa') ) );
                     form.setValue( 'fato_2', converteParaFloat( form.getValue('totalCargaHoraria') ) );
-                    form.setValue( 'fato_4', converteParaFloat( form.getValue('orcamento') ) );
+                    form.setValue( 'fato_8', converteParaFloat( form.getValue('orcamento') ) );
                     break;
             case 24:
                     form.setValue( 'fato_0', parseInt( form.getValue('totalQtdParticipantes') ) );
                     form.setValue( 'fato_1', converteParaFloat( form.getValue('totalEstimativa') ) );
                     form.setValue( 'fato_2', converteParaFloat( form.getValue('totalCargaHoraria') ) );
-                    form.setValue( 'fato_4', converteParaFloat( form.getValue('orcamento') ) );
+                    form.setValue( 'fato_8', converteParaFloat( form.getValue('orcamento') ) );
                     break;
             case 35:
                     form.setValue( 'fato_0', parseInt( form.getValue('totalQtdParticipantes') ) );
                     form.setValue( 'fato_1', converteParaFloat( form.getValue('totalEstimativa') ) );
                     form.setValue( 'fato_2', converteParaFloat( form.getValue('totalCargaHoraria') ) );
                     form.setValue( 'fato_3', converteParaFloat( form.getValue('totalGasto') ) );
-                    form.setValue( 'fato_4', converteParaFloat( form.getValue('orcamento') ) );
+                    form.setValue( 'fato_8', converteParaFloat( form.getValue('orcamento') ) );
+                    form.setValue( 'fato_7', converteParaFloat( form.getValue('totalGasto') ) / parseFloat( form.getValue('totalQtdParticipantes') ) );
                     break;
         }
-    }
+    } */
+    form.setValue( 'fato_0', parseInt( form.getValue('totalQtdParticipantes') ) );
+    form.setValue( 'fato_1', converteParaFloat( form.getValue('totalEstimativa') ) );
+    form.setValue( 'fato_2', converteParaFloat( form.getValue('totalCargaHoraria') ) );
+    form.setValue( 'fato_3', converteParaFloat( form.getValue('totalGasto') ) );
+    form.setValue( 'fato_8', converteParaFloat( form.getValue('orcamento') ) );
+    form.setValue( 'fato_7', converteParaFloat( form.getValue('totalGasto') ) / parseFloat( form.getValue('totalQtdParticipantes') ) );
 }
 if (!String.prototype.includes) {
     String.prototype.includes = function() {'use strict';
