@@ -217,7 +217,7 @@
 																	<input type="hidden" name="tagControl" id="tagControl"/>
 																</div>
 												
-																<div class="form-input participanteFluigContainer" style="margin-top: 10px;">
+																<div class="form-input participanteFluigContainer" style="margin-top: 20px;">
 																		<input name="participanteFluig" id="participanteFluig" class="form-control" placeholder="Usuário Fluig?" type="zoom" data-zoom="{
 																			'displayKey':'colleagueName',
 																			'datasetId':'colleague',
@@ -226,6 +226,21 @@
 																				{'field':'colleagueId', 'label':'Matrícula', 'standard':'true'},
 																				{'field':'colleagueName', 'label':'Nome'}
 																				]
+																		}">
+																</div>
+
+																
+																<div class="form-input funcionariosAtivosContainer" style="margin-top: 20px;">
+																	<input name="funcionariosAtivos" class="form-control" id="funcionariosAtivos" type="zoom" data-zoom="{
+																		'displayKey':'nome',
+																		'datasetId':'wsFuncionarios',
+																		'placeholder':'Pesquisa por nome de funcionário',
+																		'filterValues': 'situacao,Ativo',
+																		'fields':[
+																			{'field':'matricula', 'label':'ID', 'standard':'true'},
+																			{'field':'nome', 'label':'Nome'},
+																			{'field':'lotacao', 'label':'Lotação'}
+																			]
 																		}">
 																</div>
 															</td>

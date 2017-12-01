@@ -804,11 +804,20 @@ function setSelectedZoomItem(selectedItem) {
 		var zoomFieldName = selectedItem.inputName;
 		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
-		var zoomField = FLUIGC.autocomplete("#" + zoomFieldName);
+		var zoomField = window[zoomFieldName];
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
 		participantes.add(tagData);
-		zoomField.removeAll();
-		zoomField.destroy();
+		zoomField.clear();
+	}
+	
+	if (selectedItem.inputName.indexOf("funcionariosAtivos") !== -1) {
+		var zoomFieldName = selectedItem.inputName;
+		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".form-input").prev().prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var zoomField = window[zoomFieldName];
+		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
+		var tagData = selectedItem.matricula + " - " + selectedItem.nome;
+		participantes.add(tagData);
+		zoomField.clear();
 	}
 }
 /**
