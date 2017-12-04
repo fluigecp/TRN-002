@@ -1,286 +1,297 @@
 <!DOCTYPE html>
 <html>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<head>
-		<title>Form</title>
-		<script type="text/javascript" src="../vcXMLRPC.js"></script>
-		<link rel="stylesheet" type="text/css" href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide.min.css">
-		<link rel="stylesheet" type="text/css" href="CSS_Fluig.css" />
-		<link rel="stylesheet" type="text/css" href="app.css" />
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/js/jquery/jquery.js"></script>
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/js/jquery/jquery-ui.min.js"></script>
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/js/mustache/mustache-min.js"></script>
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
-		<!-- CUSTOM -->
-		<link href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
-		<link href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
-		<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
-		<!--<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/7.css' type='text/css' rel='stylesheet' />-->
-	</head>
-	<body class="fluig-style-guide">
-		<div class="fluig-style-guide container-fluid">
-			<form class="totvs-form grid vertical create-form-components ui-sortable t7" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;">
-				<img src="/portal/resources/images/1/logo_image.png" alt="Logo" id="logo" style="max-height: 50px; max-width: 250px;">
-				<h1 class="title-form-application text-center">Ficha do participante</h1>
-				<!-- FORM -->
-				<div class="row">
-					<div class="col-md-3 col-xs-12">
-						<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="matricula">
-							<div class="form-input">
-								<div class="form-group">
-									<label for="matricula">Matrícula<strong> *</strong></label> 
-									<input type="text" id="matricula" name="matricula" class="form-control">
-								</div>
-							</div>
-						</div>
-					</div>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
-					<div class="col-md-9 col-xs-12">
-						<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="participante">
-							<div class="form-input">
-								<div class="form-group">
-									<label for="participante">Participante <strong>*</strong></label> 
-									<input type="text" id="participante" name="participante" class="form-control">
-								</div>
-							</div>
-						</div>
-					</div>
+<head>
+	<title>Form</title>
+	<script type="text/javascript" src="../vcXMLRPC.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css" href="CSS_Fluig.css" />
+	<link rel="stylesheet" type="text/css" href="app.css" />
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/js/jquery/jquery.js"></script>
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/js/mustache/mustache-min.js"></script>
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<!-- CUSTOM -->
+	<link href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet"
+	    type="text/css">
+	<link href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet"
+	    type="text/css">
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+	<!--<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/7.css' type='text/css' rel='stylesheet' />-->
+</head>
 
-					<div class="col-md-6 col-xs-12">
-						<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="lotacao">
-							<div class="form-input">
-								<div class="form-group">
-									<label for="lotacao">Lotação<strong> *</strong></label> 
-									<input type="text" id="lotacao" name="lotacao" class="form-control">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-xs-12">
-						<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="departamento">
-							<div class="form-input">
-								<div class="form-group">
-									<label for="departamento">Setor/departamento<strong> *</strong></label> 
-									<input type="text" id="departamento" name="departamento" class="form-control">
-								</div>
+<body class="fluig-style-guide">
+	<div class="fluig-style-guide container-fluid">
+		<form class="totvs-form grid vertical create-form-components ui-sortable t7" name="createFormComponents" style="padding-left: 10px; padding-right: 10px;">
+			<input type="hidden" name="campoDescritor" id="campoDescritor" />
+			<img src="/portal/resources/images/1/logo_image.png" alt="Logo" id="logo" style="max-height: 50px; max-width: 250px;">
+			<h1 class="title-form-application text-center">Ficha do participante</h1>
+			<!-- FORM -->
+			<div class="row">
+				<div class="col-md-3 col-xs-12">
+					<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="matricula">
+						<div class="form-input">
+							<div class="form-group">
+								<label for="matricula">Matrícula
+									<strong> *</strong>
+								</label>
+								<input type="text" id="matricula" name="matricula" class="form-control">
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-12">
-						<legend>Histórico</legend>
-						<!-- Nav tabs -->
-						<ul class="nav nav-tabs" role="tablist">
-							<li class="active"><a href="#historico-treinamentos" role="tab" data-toggle="tab" class="sp-text"><span class="fluigicon-md fluigicon fluigicon-add-test"></span>Treinamentos</a></li>
-							<li><a href="#historico-avaliacoes" role="tab" data-toggle="tab" class="sp-text"><span class="fluigicon-md fluigicon fluigicon-add-test"></span>Avaliações</a></li>
-							
-						</ul>
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div class="tab-pane active fade in" id="historico-treinamentos">
-								<legend>Treinamentos realizados</legend>
-								<div class="form-field" data-type="tabledetail" data-show-properties="" id="treinamentos_realizados" data-field-name="treinamentos_realizados">
-										<div class="form-input">
-											<div class="form-group">
-												<div class="table-responsive" style="overflow-x: auto;">
-													<table class="table table-striped table-bordered table-hover table-condensed table-treinamentos-realizados" noaddbutton="true" nodeletebutton="true" tablename="treinamentos_realizados">
-														<thead>
-															<tr class="tableHeadRow">
-																<th style="width: .1%" class="tableColumn text-center lixeira"></th> 
-																<th style="width: 5%" class="tableColumn text-center">Solicitação</th>
-																<th style="width: 20%" class="tableColumn text-center">Título do treinamento</th>
-																<th style="width: 20%" class="tableColumn text-center">Classificação</th>
-																<th style="width: 20%" class="tableColumn text-center">Instituição</th>
-																<th style="width: 20%" class="tableColumn text-center">Justificativa</th>
-																<th style="width: 7%" class="tableColumn text-center">Carga horária</th>
-																<th style="width: 8%" class="tableColumn text-center">Ano de realização</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr class="tableBodyRow">
-																<td class="fs-v-align-middle lixeiraTbTreinamentosRealizados">
-																	<div class="form-input">
-																		<div class="form-input">
-																			<i class="fluigicon fluigicon-trash fluigicon-md btn-delete" style="cursor:pointer"></i>
-																		</div>
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="numeroSolicitacao" class="form-control numeroSolicitacaoTable1" id="numeroSolicitacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="titulo-do-treinamento" class="form-control titulo-do-treinamento" id="titulo-do-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="classificacao-treinamento" class="form-control classificacao-do-treinamento" id="classificacao-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="instituicao-treinamento" class="form-control instituicao-treinamento" id="instituicao-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="justificativa-treinamento" class="form-control justificativa-treinamento" id="justificativa-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="carga-horaria" class="form-control carga-horaria-treinamento" id="carga-horaria">
-																	</div>
-																</td>	
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="ano-realizacao" class="form-control ano-realizacao-treinamento" id="ano-realizacao">
-																	</div>
-																</td>	
-															</tr>
-													</tbody>
-												</table>													
-											</div>
+				<div class="col-md-9 col-xs-12">
+					<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="participante">
+						<div class="form-input">
+							<div class="form-group">
+								<label for="participante">Participante
+									<strong>*</strong>
+								</label>
+								<input type="text" id="participante" name="participante" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xs-12">
+					<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="lotacao">
+						<div class="form-input">
+							<div class="form-group">
+								<label for="lotacao">Lotação
+									<strong> *</strong>
+								</label>
+								<input type="text" id="lotacao" name="lotacao" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-field" data-type="textbox" data-show-properties="" data-field-name="departamento">
+						<div class="form-input">
+							<div class="form-group">
+								<label for="departamento">Setor/departamento
+									<strong> *</strong>
+								</label>
+								<input type="text" id="departamento" name="departamento" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-md-12">
+					<legend>Histórico</legend>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active">
+							<a href="#historico-treinamentos" role="tab" data-toggle="tab" class="sp-text">
+								<span class="fluigicon-md fluigicon fluigicon-add-test"></span>Treinamentos</a>
+						</li>
+						<li>
+							<a href="#historico-avaliacoes" role="tab" data-toggle="tab" class="sp-text">
+								<span class="fluigicon-md fluigicon fluigicon-add-test"></span>Avaliações</a>
+						</li>
+
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active fade in" id="historico-treinamentos">
+							<legend>Treinamentos realizados</legend>
+							<div class="form-field" data-type="tabledetail" data-show-properties="" id="treinamentos_realizados" data-field-name="treinamentos_realizados">
+								<div class="form-input">
+									<div class="form-group">
+										<div class="table-responsive" style="overflow-x: auto;">
+											<table class="table table-striped table-bordered table-hover table-condensed table-treinamentos-realizados" noaddbutton="true"
+											    nodeletebutton="true" tablename="treinamentos_realizados">
+												<thead>
+													<tr class="tableHeadRow">
+														<th style="width: 5%" class="tableColumn text-center">Solicitação</th>
+														<th style="width: 20%" class="tableColumn text-center">Título do treinamento</th>
+														<th style="width: 20%" class="tableColumn text-center">Classificação</th>
+														<th style="width: 20%" class="tableColumn text-center">Instituição</th>
+														<th style="width: 20%" class="tableColumn text-center">Justificativa</th>
+														<th style="width: 7%" class="tableColumn text-center">Carga horária</th>
+														<th style="width: 8%" class="tableColumn text-center">Ano de realização</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="tableBodyRow">
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="numero-solicitacao-tb1" class="form-control numero-solicitacao-tb1" id="numero-solicitacao-tb1">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="titulo-do-treinamento-tb1" class="form-control titulo-do-treinamento-tb1" id="titulo-do-treinamento-tb1">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="classificacao-treinamento-tb1" class="form-control classificacao-do-treinamento-tb1" id="classificacao-treinamento-tb1">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="instituicao-treinamento-tb1" class="form-control instituicao-treinamento-tb1" id="instituicao-treinamento-tb1">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<textarea name="justificativa-treinamento-tb1" class="form-control expand justificativa-treinamento-tb1" title="Clique para expandir"
+																    id="justificativa-treinamento-tb1">
+																</textarea>
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="carga-horaria-tb1" class="form-control carga-horaria-tb1" id="carga-horaria-tb1">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="ano-realizacao-tb1" class="form-control ano-realizacao-tb1" id="ano-realizacao-tb1">
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="historico-avaliacoes">
+							<legend>Avaliações de reação</legend>
+							<div class="form-field" data-type="tabledetail" data-show-properties="" id="avaliacoes_reacao" data-field-name="avaliacoes_reacao">
+								<div class="form-input">
+									<div class="form-group">
+										<div class="table-responsive" style="overflow-x: auto;">
+											<table class="table table-striped table-bordered table-hover table-condensed table-avaliacoes-reacao" noaddbutton="true"
+											    nodeletebutton="true" tablename="avaliacoes_reacao">
+												<thead>
+													<tr class="tableHeadRow">
+														<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
+														<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
+														<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
+														<th style="width: 10%" class="tableColumn text-center">Início</th>
+														<th style="width: 10%" class="tableColumn text-center">Término</th>
+														<th style="width: 20%" class="tableColumn text-center">Avaliação média</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="tableBodyRow">
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="numero-solicitacao-tb2" class="form-control numero-solicitacao-tb2" id="numero-solicitacao-tb2">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="titulo-do-treinamento-tb2" class="form-control titulo-do-treinamento-tb2" id="titulo-do-treinamento-tb2">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="ano-realizacao-tb2" class="form-control ano-realizacao-tb2" id="ano-realizacao-tb2">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="data-inicio-tb2" class="form-control data-inicio-tb2" id="data-inicio-tb2">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="data-termino-tb2" class="form-control data-termino-tb2" id="data-termino-tb2">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="avaliacao-media-tb2" class="form-control avaliacao-media-tb2" id="avaliacao-media-tb2">
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="historico-avaliacoes">
-								<legend>Avaliações de reação</legend>
-								<div class="form-field" data-type="tabledetail" data-show-properties="" id="avaliacoes_reacao" data-field-name="avaliacoes_reacao">
-										<div class="form-input">
-											<div class="form-group">
-												<div class="table-responsive" style="overflow-x: auto;">
-													<table class="table table-striped table-bordered table-hover table-condensed table-avaliacoes-reacao" noaddbutton="true" nodeletebutton="true" tablename="avaliacoes_reacao">
-														<thead>
-															<tr class="tableHeadRow">
-																<th style="width: .1%" class="tableColumn text-center lixeira"></th> 
-																<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
-																<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
-																<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
-																<th style="width: 20%" class="tableColumn text-center">Período de realização</th>
-																<th style="width: 20%" class="tableColumn text-center">Avaliação média</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr class="tableBodyRow">
-																<td class="fs-v-align-middle lixeiraTbAvaliacoesReacao">
-																	<div class="form-input">
-																		<div class="form-input">
-																			<i class="fluigicon fluigicon-trash fluigicon-md btn-delete" style="cursor:pointer"></i>
-																		</div>
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="numeroSolicitacao" class="form-control numeroSolicitacaoTable2" id="numeroSolicitacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="titulo-do-treinamento" class="form-control titulo-do-treinamento" id="titulo-do-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="ano-realizacao" class="form-control ano-realizacao" id="ano-realizacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="periodo-realizacao" class="form-control periodo-realizacao" id="periodo-realizacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="avaliacao-media" class="form-control avaliacao-treinamento" id="avaliacao-media">
-																	</div>
-																</td>	
-															</tr>
-														</tbody>
-													</table>
-													
-												</div>
-											</div>
+							<legend>Avaliações de eficácia</legend>
+							<div class="form-field" data-type="tabledetail" data-show-properties="" id="avaliacoes-eficacia" data-field-name="avaliacoes-eficacia">
+								<div class="form-input">
+									<div class="form-group">
+										<div class="table-responsive" style="overflow-x: auto;">
+											<table class="table table-striped table-bordered table-hover table-condensed table-avaliacoes-eficacia" noaddbutton="true"
+											    nodeletebutton="true" tablename="avaliacoes-eficacia">
+												<thead>
+													<tr class="tableHeadRow">
+														<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
+														<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
+														<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
+														<th style="width: 10%" class="tableColumn text-center">Início</th>
+														<th style="width: 10%" class="tableColumn text-center">Término</th>
+														<th style="width: 20%" class="tableColumn text-center">Carga horária</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="tableBodyRow">
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="numero-solicitacao-tb3" class="form-control numero-solicitacao-tb3" id="numero-solicitacao-tb3">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="titulo-do-treinamento-tb3" class="form-control titulo-do-treinamento-tb3" id="titulo-do-treinamento-tb3">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="ano-realizacao-tb3" class="form-control ano-realizacao-tb3" id="ano-realizacao-tb3">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="data-inicio-tb3" class="form-control data-inicio-tb3" id="data-inicio-tb3">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="data-termino-tb3" class="form-control data-termino-tb3" id="data-termino-tb3">
+															</div>
+														</td>
+														<td class="fs-v-align-middle">
+															<div class="form-input">
+																<input name="carga-horaria-tb3" class="form-control carga-horaria-tb3" id="carga-horaria-tb3">
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
-
-									<legend>Avaliações de eficácia</legend>
-									<div class="form-field" data-type="tabledetail" data-show-properties="" id="avaliacoes-eficacia" data-field-name="avaliacoes-eficacia">
-										<div class="form-input">
-											<div class="form-group">
-												<div class="table-responsive" style="overflow-x: auto;">
-													<table class="table table-striped table-bordered table-hover table-condensed table-avaliacoes-eficacia" noaddbutton="true" nodeletebutton="true" tablename="avaliacoes-eficacia">
-														<thead>
-															<tr class="tableHeadRow">
-																<th style="width: .1%" class="tableColumn text-center lixeira"></th> 
-																<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
-																<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
-																<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
-																<th style="width: 20%" class="tableColumn text-center">Período de realização</th>
-																<th style="width: 20%" class="tableColumn text-center">Carga horária</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr class="tableBodyRow">
-																<td class="fs-v-align-middle lixeiraTbAvaliacoesEficacia">
-																	<div class="form-input">
-																		<div class="form-input">
-																			<i class="fluigicon fluigicon-trash fluigicon-md btn-delete" style="cursor:pointer"></i>
-																		</div>
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="numeroSolicitacao" class="form-control numeroSolicitacaoTable3" id="numeroSolicitacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="titulo-do-treinamento" class="form-control titulo-do-treinamento" id="titulo-do-treinamento">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="ano-realizacao" class="form-control ano-realizacao" id="ano-realizacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="periodo-realizacao" class="form-control periodo-realizacao" id="periodo-realizacao">
-																	</div>
-																</td>
-																<td class="fs-v-align-middle">
-																	<div class="form-input">
-																		<input name="carga-horaria" class="form-control carga-horaria" id="carga-horaria">
-																	</div>
-																</td>	
-															</tr>
-														</tbody>
-													</table>
-													
-												</div>
-											</div>
-										</div>
-									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</form>
-		</div>
-		<script type="text/javascript" src="validacao.js"></script>
-		<script type="text/javascript" src="formValidate.js"></script>
-		<script type="text/javascript" src="src/manipulateDOM.js"></script>
-		<script type="text/javascript" src="src/lifecycle.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="validacao.js"></script>
+	<script type="text/javascript" src="formValidate.js"></script>
+	<script type="text/javascript" src="src/manipulateDOM.js"></script>
+	<script type="text/javascript" src="src/lifecycle.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
 </html>
-	
