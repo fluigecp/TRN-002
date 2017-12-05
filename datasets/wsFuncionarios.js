@@ -42,6 +42,7 @@ function createDataset(fields, constraints, sortFields) {
 		if(constraints != null){
 			for(var c in constraints){
 				if(constraints[c].fieldName != 'sqlLimit'){
+					log.warn("%%% +++++++ constraints[c].fieldName" + constraints[c].fieldName);
 					var parametro = serviceHelper.instantiate('org.tempuri.ConsultaParametro');
 					parametro.setParametro(constraints[c].fieldName);
 					parametro.setValor(constraints[c].initialValue);
@@ -73,8 +74,11 @@ function createDataset(fields, constraints, sortFields) {
 			var funcionarios = JSON.parse(funcionariosOBJ);
 			var funcionariosLinhas = funcionarios["Funcionarios"]["Linha"];
 			if ( funcionariosLinhas != undefined ) {
+				log.warn("%%% +++++++ existe funcionariosLinhas");
 				if ( funcionariosLinhas.length != undefined ) {
+					log.warn("%%% +++++++ existe prop length funcionariosLinhas");
 					if (funcionariosLinhas.length > 0) {
+							log.warn("%%% +++++++ existe prop length funcionariosLinhas > 0");
 							for (var i = 0; i < funcionariosLinhas.length; i++) {
 								var datasetRow = new Array();
 								datasetRow.push(funcionariosLinhas[i]["Nome"]);
@@ -84,14 +88,15 @@ function createDataset(fields, constraints, sortFields) {
 								dataset.addRow(datasetRow);
 							}
 						
-					} else {
-						var datasetRow = new Array();
-						datasetRow.push(funcionariosLinhas.Nome);
-						datasetRow.push(funcionariosLinhas.Chapa);
-						datasetRow.push(funcionariosLinhas.Lotacao);
-						datasetRow.push(funcionariosLinhas.Situacao);
-						dataset.addRow(datasetRow);
-					}
+					} 
+				} else {
+					// Quando retorna apenas 1 registro, ele vem fora de um array, logo a propriedade length é undefined
+					var datasetRow = new Array();
+					datasetRow.push(funcionariosLinhas.Nome);
+					datasetRow.push(funcionariosLinhas.Chapa);
+					datasetRow.push(funcionariosLinhas.Lotacao);
+					datasetRow.push(funcionariosLinhas.Situacao);
+					dataset.addRow(datasetRow);
 				}
 			}
 		}
