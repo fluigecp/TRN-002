@@ -44,7 +44,11 @@ function createDataset(fields, constraints, sortFields) {
 				if(constraints[c].fieldName != 'sqlLimit'){
 					log.warn("%%% +++++++ constraints[c].fieldName" + constraints[c].fieldName);
 					var parametro = serviceHelper.instantiate('org.tempuri.ConsultaParametro');
-					parametro.setParametro(constraints[c].fieldName);
+					if ( constraints[c].fieldName == 'matricula' ) {
+						parametro.setParametro('Chapa');
+					} else {
+						parametro.setParametro(constraints[c].fieldName);
+					}
 					parametro.setValor(constraints[c].initialValue);
 					parametros.getConsultaParametro().add(parametro);
 				}
