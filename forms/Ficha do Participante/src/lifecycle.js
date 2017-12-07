@@ -15,6 +15,7 @@
         
         var control = function() {
             manipulateDOM.addButtonsSolic();
+            $(".expand").on("click", manipulateDOM.actions4Listeners.expandEventListener);
         };
 
         return {

@@ -105,14 +105,8 @@
 											    nodeletebutton="true" tablename="treinamentos_realizados">
 												<thead>
 													<tr class="tableHeadRow">
-														<th style="width: 5%" class="tableColumn text-center">Solicitação</th>
-														<th style="width: 20%" class="tableColumn text-center">Título do treinamento</th>
-														<th style="width: 15%" class="tableColumn text-center">Classificação</th>
-														<th style="width: 5%" class="tableColumn text-center">Planejamento anual</th>
-														<th style="width: 20%" class="tableColumn text-center">Instituição</th>
-														<th style="width: 20%" class="tableColumn text-center">Justificativa</th>
-														<th style="width: 7%" class="tableColumn text-center">Carga horária</th>
-														<th style="width: 8%" class="tableColumn text-center">Ano de realização</th>
+														<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
+														<th style="width: 90%" class="tableColumn text-center">Dados do treinamento</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -124,40 +118,61 @@
 															</div>
 														</td>
 														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="titulo_do_treinamento_tb1" class="form-control titulo-do-treinamento-tb1" id="titulo-do-treinamento-tb1">
+															<div class="row row-wrap-table">
+																<div class="col-md-6 col-xs-12">
+																	<div class="form-input">
+																		<label>Título do treinamento</label>
+																		<input name="titulo_do_treinamento_tb1" class="form-control titulo-do-treinamento-tb1" id="titulo-do-treinamento-tb1">
+																	</div>
+																</div>
+
+																<div class="col-md-3 col-xs-12">
+																	<div class="form-input">
+																		<label>Classificação</label>
+																		<input name="classificacao_treinamento_tb1" class="form-control classificacao-do-treinamento-tb1" id="classificacao-treinamento-tb1">
+																	</div>
+																</div>
+
+																<div class="col-md-3 col-xs-12">
+																	<div class="form-input">
+																		<label>Planejamento anual</label>
+																		<input name="planejamento_anual_tb1" class="form-control planejamento_anual_tb1" id="planejamento_anual_tb1">
+																	</div>
+																</div>
 															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="classificacao_treinamento_tb1" class="form-control classificacao-do-treinamento-tb1" id="classificacao-treinamento-tb1">
+
+															<div class="row row-wrap-table">
+																<div class="col-md-12 col-xs-12">
+																	<div class="form-input">
+																		<label>Justificativa</label>
+																		<textarea name="justificativa_treinamento_tb1" class="form-control expand justificativa-treinamento-tb1" title="Clique para expandir"
+																		    id="justificativa-treinamento-tb1">
+																		</textarea>
+																	</div>
+																</div>
 															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="planejamento_anual_tb1" class="form-control planejamento_anual_tb1" id="planejamento_anual_tb1">
-															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="instituicao_treinamento_tb1" class="form-control instituicao-treinamento-tb1" id="instituicao-treinamento-tb1">
-															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<textarea name="justificativa_treinamento_tb1" class="form-control expand justificativa-treinamento-tb1" title="Clique para expandir"
-																    id="justificativa-treinamento-tb1">
-																</textarea>
-															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="carga_horaria_tb1" class="form-control carga-horaria-tb1" id="carga-horaria-tb1">
-															</div>
-														</td>
-														<td class="fs-v-align-middle">
-															<div class="form-input">
-																<input name="ano_realizacao_tb1" class="form-control ano-realizacao-tb1" id="ano-realizacao-tb1">
+
+															<div class="row row-wrap-table">
+																<div class="col-md-6 col-xs-12">
+																	<div class="form-input">
+																		<label>Instituição</label>
+																		<input name="instituicao_treinamento_tb1" class="form-control instituicao-treinamento-tb1" id="instituicao-treinamento-tb1">
+																	</div>
+																</div>
+
+																<div class="col-md-3 col-xs-12">
+																	<div class="form-input">
+																		<label>Carga horária</label>
+																		<input name="carga_horaria_tb1" class="form-control carga-horaria-tb1" id="carga-horaria-tb1">
+																	</div>
+																</div>
+
+																<div class="col-md-3 col-xs-12">
+																	<div class="form-input">
+																		<label>Ano de realização</label>
+																		<input name="ano_realizacao_tb1" class="form-control ano-realizacao-tb1" id="ano-realizacao-tb1">
+																	</div>
+																</div>
 															</div>
 														</td>
 													</tr>
@@ -180,11 +195,11 @@
 												<thead>
 													<tr class="tableHeadRow">
 														<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
-														<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
-														<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
+														<th style="width: 40%" class="tableColumn text-center">Treinamento</th>
+														<th style="width: 10%" class="tableColumn text-center">Ano de realização</th>
 														<th style="width: 10%" class="tableColumn text-center">Início</th>
 														<th style="width: 10%" class="tableColumn text-center">Término</th>
-														<th style="width: 20%" class="tableColumn text-center">Avaliação média</th>
+														<th style="width: 10%" class="tableColumn text-center">Avaliação média</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -239,8 +254,8 @@
 												<thead>
 													<tr class="tableHeadRow">
 														<th style="width: 10%" class="tableColumn text-center">Solicitação</th>
-														<th style="width: 20%" class="tableColumn text-center">Treinamento</th>
-														<th style="width: 20%" class="tableColumn text-center">Ano de realização</th>
+														<th style="width: 40%" class="tableColumn text-center">Treinamento</th>
+														<th style="width: 10%" class="tableColumn text-center">Ano de realização</th>
 														<th style="width: 10%" class="tableColumn text-center">Início</th>
 														<th style="width: 10%" class="tableColumn text-center">Término</th>
 													</tr>
