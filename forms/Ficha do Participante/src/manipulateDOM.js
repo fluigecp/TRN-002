@@ -44,7 +44,6 @@
                 event.preventDefault();
                 var type = $(this).prop('tagName');
                 var classe = ($(this).attr('class')).indexOf('expand');
-                $(this).css('resize', 'none');
                 if (classe > -1) {
                     $(this).show('slow', function () {
                         $(this).css({
