@@ -57,7 +57,7 @@
 
         };
 
-        var populate = {
+        var _populate = {
             mainForm: function(objData) {
                 var matricula = objData.matricula == undefined ? "" : objData.matricula;
                 var participante = objData.participante == undefined ? "" : objData.participante;
@@ -138,19 +138,19 @@
                 eficacia = servicesModule.consultas.getAvaliacaoEficacia(constraintZoom);
 
                 if (participante) {
-                    populate.mainForm(participante[0]);
+                    _populate.mainForm(participante[0]);
                 }
                 
                 if (treinamentos) {
-                    populate.tables.treinamentos(treinamentos);
+                    _populate.tables.treinamentos(treinamentos);
                 }
                 
                 if (reacao) {
-                    populate.tables.reacao(reacao);
+                    _populate.tables.reacao(reacao);
                 }
                 
                 if (eficacia) {
-                    populate.tables.eficacia(eficacia);
+                    _populate.tables.eficacia(eficacia);
                 }
                 manipulateDOM.addButtonsSolic();
             }
