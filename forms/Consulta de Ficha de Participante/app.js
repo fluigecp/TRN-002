@@ -15,6 +15,7 @@
  * interação com qualquer campo zoom do formulário.
  * @param selectedItem objeto zoom que foi modificado no formulário
  */
-/*function setSelectedZoomItem(selectedItem) {
+
+function setSelectedZoomItem(selectedItem) {
 	manipulateDOM.zoomFields.eventZoom(selectedItem);
-}*/
+}
