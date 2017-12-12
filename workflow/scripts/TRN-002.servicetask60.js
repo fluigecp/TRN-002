@@ -53,12 +53,13 @@ function servicetask60(attempt, message) {
 
 		var fieldsAvaliacao = ["nomeParticipante", "matricula", "area", "cursoTreinamento",
 			"instituicao", "cargaHoraria", "avaliadorMat",
-			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea", "aberturaAutomatica"
+			"numSolicTreinamento", "classificacaoCurso", "campoDescritor", "matResponsavelArea", "aberturaAutomatica",
+			"justificativaTreinamento", "anoTreinamento", "processIdOrigin"
 		];
 
 		var fieldsAvaliacaoWithDepartamento = ["area", "cursoTreinamento", "instituicao", "cargaHoraria",
 			"numSolicTreinamento", "classificacaoCurso",
-			"matResponsavelArea", "aberturaAutomatica"
+			"matResponsavelArea", "aberturaAutomatica", "justificativaTreinamento", "anoTreinamento", "processIdOrigin"
 		];
 
 		var treinamentos = getTreinamentos(documentId);
@@ -68,17 +69,20 @@ function servicetask60(attempt, message) {
 			var participantesObj = filterParticipantesObj(treinamentos.getValue(index, "matriculasNomesTbTreinamentos"));
 			var classificacao = validateClassificacao(treinamentos.getValue(index, "classificacaoTbTreinamentos"));
 
-			if ( checkIfHasDepartamento(participantesObj) ) {
+			if (checkIfHasDepartamento(participantesObj)) {
 				var fieldsRequisicaoWithDepartamento = [];
-				fieldsRequisicaoWithDepartamento.push( solicitacao.getValue(0, "departamento") + "" );
-				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "treinamentoTbTreinamentos") + "" );
-				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "" );
-				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "cargaHorariaTbTreinamentos")  + "" );
-				fieldsRequisicaoWithDepartamento.push( numSolicPai + "" );
-				fieldsRequisicaoWithDepartamento.push( classificacao + "" );
-				fieldsRequisicaoWithDepartamento.push( hAPI.getCardValue("matResponsavelDepartamento") + "" );
-				fieldsRequisicaoWithDepartamento.push( "Sim" );
-				var qtdeParticipantes = parseInt( treinamentos.getValue(index, "qtdeParticipanteTbTreinamentos") );
+				fieldsRequisicaoWithDepartamento.push(solicitacao.getValue(0, "departamento") + "");
+				fieldsRequisicaoWithDepartamento.push(treinamentos.getValue(index, "treinamentoTbTreinamentos") + "");
+				fieldsRequisicaoWithDepartamento.push(treinamentos.getValue(index, "entidadeSugeridaTbTreinamentos") + "");
+				fieldsRequisicaoWithDepartamento.push(treinamentos.getValue(index, "cargaHorariaTbTreinamentos") + "");
+				fieldsRequisicaoWithDepartamento.push(numSolicPai + "");
+				fieldsRequisicaoWithDepartamento.push(classificacao + "");
+				fieldsRequisicaoWithDepartamento.push(hAPI.getCardValue("matResponsavelDepartamento") + "");
+				fieldsRequisicaoWithDepartamento.push("Sim");
+				fieldsRequisicaoWithDepartamento.push( treinamentos.getValue(index, "justificativaTbTreinamentos") + "" );
+				fieldsRequisicaoWithDepartamento.push( hAPI.getCardValue("anoVigencia") + "" );
+				fieldsRequisicaoWithDepartamento.push( "TRN-002" );
+				var qtdeParticipantes = parseInt(treinamentos.getValue(index, "qtdeParticipanteTbTreinamentos"));
 				for (var y = 0; y < qtdeParticipantes; y++) {
 					var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
 					for (var j = 0; j < fieldsAvaliacaoWithDepartamento.length; j++) {
@@ -100,7 +104,7 @@ function servicetask60(attempt, message) {
 					if (searchUserMat(participantesObj[i].matricula)) {
 						currentMat = participantesObj[i].matricula;
 					}
-					
+
 
 					log.warn("%%%%%% classificacao: " + classificacao);
 					fieldsPropor.push(participantesObj[i].nome + "");
@@ -115,6 +119,9 @@ function servicetask60(attempt, message) {
 					fieldsPropor.push(camposDescritor + "");
 					fieldsPropor.push(responsavelArea + "");
 					fieldsPropor.push("Sim");
+					fieldsPropor.push(treinamentos.getValue(index, "justificativaTbTreinamentos") + "");
+					fieldsPropor.push(hAPI.getCardValue("anoVigencia") + "");
+					fieldsPropor.push("TRN-002");
 					var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
 					for (var x = 0; x < fieldsPropor.length; x++) {
 						var objField = servico.instantiate("net.java.dev.jaxb.array.StringArray");
@@ -125,9 +132,9 @@ function servicetask60(attempt, message) {
 					novaSolic = WorkflowEngineService.startProcess(username, password, companyId, processId, choosedState, colleagueIds, comments, userId,
 						completeTask, attachments, cardData, appointment, managerMode);
 				}
+			}
+			hAPI.setCardValue(treinamentos.getValue(index, "hasAvaliacaoReacaoName"), "SIM");
 		}
-		hAPI.setCardValue( treinamentos.getValue(index,"hasAvaliacaoReacaoName"), "SIM");
-	}
 
 
 	} catch (error) {
