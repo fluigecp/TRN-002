@@ -9,6 +9,11 @@
         margin-bottom: 25px;
     }
     .tb-treinamentos-width{
-        width: 2000px !important;
+        width: 2500px !important;
+        table-layout: fixed;
+    }
+
+    th.tableColumn.text-center.lixeira {
+        width: 1.2% !important;
     }
 }
