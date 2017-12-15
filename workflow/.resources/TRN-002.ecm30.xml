@@ -1591,7 +1591,7 @@
       <initialStateSequence>37</initialStateSequence>
       <finalStateSequence>40</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>Não</name>
       <automaticLink>false</automaticLink>
       <type>0</type>
     </ProcessLink>
