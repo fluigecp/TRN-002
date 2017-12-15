@@ -316,6 +316,14 @@ $(document).ready(function () {
 				$('.tableBodyRow td:nth-last-child(2)').css("display", "table-cell");
 			}
 		}
+		var regTreinamentos = $("#treinamentos table tbody tr.tableBodyRow:not(:first)");
+		if (regTreinamentos.length > 0) {
+			regTreinamentos.each(function(){
+				var $hasAvaliacaoReacao = $(this).closest(".tableBodyRow").find("input[name*=hasAvaliacaoReacao___]");
+				var $hasAvaliacaoReacaoName = $(this).closest(".tableBodyRow").find("input[name*=hasAvaliacaoReacaoName___]");
+				$hasAvaliacaoReacaoName.val( $hasAvaliacaoReacao.attr("name") );
+			});
+		}
 	}
 
 	if (activity == 35) {
