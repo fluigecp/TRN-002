@@ -669,9 +669,9 @@ function calculaSaldo() {
 	var fieldValorEstimativaValue = 0;
 	var fieldStatusValue = "";
 	$('.valorGastoTbTreinamentos').each(function () {
-		fieldStatusValue = $(this).closest(".tableBodyRow").find('select[name*=statsTbTreinamentos___]').val();
+		fieldStatusValue = $(this).closest(".tableBodyRow").find('select[name*=statsTbTreinamentos]').val();
 		fieldValorGastoValue = $(this).val();
-		fieldValorEstimativaValue = converteParaFloat($(this).closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]').val());
+		fieldValorEstimativaValue = converteParaFloat($(this).closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos]').val());
 		fieldValorEstimativaValue = fieldStatusValue == "CANCELADO" ? 0 : fieldValorEstimativaValue;
 		somatoriaDespesas += (fieldValorGastoValue == "0,00" || fieldValorGastoValue == "") && fieldStatusValue != "REALIZADO" ?
 			fieldValorEstimativaValue : converteParaFloat(fieldValorGastoValue);
@@ -697,9 +697,9 @@ function calculaSaldo() {
 function atualizaEstimativaStatus(combo) {
 	var currentValorEstimativa, estimativa, comboValue;
 	//obtém o valor da estimativa
-	currentValorEstimativa = combo.closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]');
+	currentValorEstimativa = combo.closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos]');
 	//obtém o valor gasto no treinamento
-	currentValorGasto = combo.closest(".tableBodyRow").find('input[name*=valorGastoTbTreinamentos___]');
+	currentValorGasto = combo.closest(".tableBodyRow").find('input[name*=valorGastoTbTreinamentos]');
 	comboValue = combo.val();
 	if (comboValue == "") {
 		combo.removeClass("has-success has-error");
