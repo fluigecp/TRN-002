@@ -213,6 +213,11 @@ $(document).ready(function () {
 			});
 			var inputs = $("[mask]");
 			MaskEvent.initMask(inputs);
+
+			FLUIGC.popover('.bs-docs-popover-hover', {
+				trigger: 'hover',
+				placement: 'auto'
+			});
 		});
 
 		// Replica Treinamento anterior
@@ -260,6 +265,11 @@ $(document).ready(function () {
 				}
 				var inputs = $("[mask]");
 				MaskEvent.initMask(inputs);
+
+				FLUIGC.popover('.bs-docs-popover-hover', {
+					trigger: 'hover',
+					placement: 'auto'
+				});
 			}
 		});
 
