@@ -33,23 +33,23 @@ $(window).load(function () {
 		$eventoNome.add($eventoTagData);
 	}
 
-	if ( act == 12 || act == 24 ) {
+	if (act == 12 || act == 24) {
 		$(document).on("fluig.autocomplete.itemAdded fluig.autocomplete.itemRemoved", function (item) {
 			var participantesIdField = item.target.id;
 			participantesIdField = participantesIdField.indexOf("participanteFluig") == -1 ? participantesIdField : "";
-			if ( participantesIdField != "" ) {
+			if (participantesIdField != "") {
 				var myTagParticipantes = FLUIGC.autocomplete("#" + participantesIdField);
 				var myTagParticipantesArray = myTagParticipantes.items();
-				var totalParticipantes = $( "[name=" + participantesIdField + "]").closest(".tableBodyRow").find(".qtdeParticipanteTbTreinamentos").val();
+				var totalParticipantes = $("[name=" + participantesIdField + "]").closest(".tableBodyRow").find(".qtdeParticipanteTbTreinamentos").val();
 				var participantesObj = filterParticipantesObj(myTagParticipantesArray);
 				var hasDepartamento = checkIfHasDepartamento(participantesObj);
-				var $tagControl = $( "[name=" + participantesIdField + "]").closest(".tableBodyRow").find("[name*=tagControl___]");
+				var $tagControl = $("[name=" + participantesIdField + "]").closest(".tableBodyRow").find("[name*=tagControl___]");
 				console.log("tagControl: ", $tagControl);
-				if ( hasDepartamento ) {
+				if (hasDepartamento) {
 					$tagControl.val("Sim");
 					console.log("Departamento added, passed!");
 				} else {
-					if ( myTagParticipantesArray.length < totalParticipantes ) {
+					if (myTagParticipantesArray.length < totalParticipantes) {
 						$tagControl.val("Não");
 						console.log("Adicionar mais participantes!");
 					} else {
@@ -58,7 +58,7 @@ $(window).load(function () {
 					}
 				}
 			}
-        });
+		});
 	}
 
 });
@@ -90,7 +90,7 @@ $(document).ready(function () {
 	});
 
 	//Init Datatables
-	$("table[tablename=tbTreinamentos]").DataTable( {
+	$("table[tablename=tbTreinamentos]").DataTable({
 		scrollY: '100vmin',
 		scrollX: '100%',
 		scrollCollapse: true,
@@ -98,7 +98,7 @@ $(document).ready(function () {
 		searching: false,
 		ordering: false,
 		info: false,
-	} );
+	});
 
 	// Init popovers
 
@@ -205,7 +205,7 @@ $(document).ready(function () {
 			/*$(".qtdeParticipanteTbTreinamentos:not(:first)").each(function () {
 				updateAutoCompleteWithLimit(this);
 			});*/
-			updateAutoCompleteWithLimit( $("#qtdeParticipanteTbTreinamentos___" + row ) );
+			updateAutoCompleteWithLimit($("#qtdeParticipanteTbTreinamentos___" + row));
 			$(".statusTbTreinamentos").each(function () {
 				var currentStatus = $(this);
 				if (currentStatus.val() == "REALIZADO" || currentStatus.val() == "CANCELADO")
@@ -225,17 +225,17 @@ $(document).ready(function () {
 				$("#statusTbTreinamentos___" + row).val("");
 				$("#cancelamentoJustificado___" + row).val("NAO");
 				$("#hasAvaliacaoReacao___" + row).val("NAO");
-				$("#hasAvaliacaoReacaoName___" + row).val( "hasAvaliacaoReacao___" + row );
-				$("#treinamentoTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="treinamentoTbTreinamentos___"]').val() );
-				$("#classificacaoTbTreinamentos___" + row).val( linhaAnterior.find('select[name*="classificacaoTbTreinamentos___"]').val() );
-				$("#justificativaTbTreinamentos___" + row).val( linhaAnterior.find('textarea[name*="justificativaTbTreinamentos___"]').val() );
-				$("#qtdeParticipanteTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="qtdeParticipanteTbTreinamentos___"]').val() );
-				var auto = updateAutoCompleteWithLimit( $(" #qtdeParticipanteTbTreinamentos___" + row ) );
-				auto.add( linhaAnterior.find('input[name*="matriculasNomesTbTreinamentos___"]').val() );
-				$("#entidadeSugeridaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="entidadeSugeridaTbTreinamentos___"]').val() );
-				$("#mesPrevistoTbTreinamentos___" + row).val( linhaAnterior.find('select[name*="mesPrevistoTbTreinamentos___"]').val() );
-				$("#estimativaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="estimativaTbTreinamentos___"]').val() );
-				$("#cargaHorariaTbTreinamentos___" + row).val( linhaAnterior.find('input[name*="cargaHorariaTbTreinamentos___"]').val() );
+				$("#hasAvaliacaoReacaoName___" + row).val("hasAvaliacaoReacao___" + row);
+				$("#treinamentoTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="treinamentoTbTreinamentos___"]').val());
+				$("#classificacaoTbTreinamentos___" + row).val(linhaAnterior.find('select[name*="classificacaoTbTreinamentos___"]').val());
+				$("#justificativaTbTreinamentos___" + row).val(linhaAnterior.find('textarea[name*="justificativaTbTreinamentos___"]').val());
+				$("#qtdeParticipanteTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="qtdeParticipanteTbTreinamentos___"]').val());
+				var auto = updateAutoCompleteWithLimit($(" #qtdeParticipanteTbTreinamentos___" + row));
+				auto.add(linhaAnterior.find('input[name*="matriculasNomesTbTreinamentos___"]').val());
+				$("#entidadeSugeridaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="entidadeSugeridaTbTreinamentos___"]').val());
+				$("#mesPrevistoTbTreinamentos___" + row).val(linhaAnterior.find('select[name*="mesPrevistoTbTreinamentos___"]').val());
+				$("#estimativaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="estimativaTbTreinamentos___"]').val());
+				$("#cargaHorariaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="cargaHorariaTbTreinamentos___"]').val());
 				$("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
 				$("#valorGastoTbTreinamentos___" + row).css({
 					"pointer-events": "none",
@@ -263,7 +263,7 @@ $(document).ready(function () {
 			}
 		});
 
-		
+
 
 		/**
 		 *  @description Trava valores negativos no campo de quantidade de participantes e atualiza 
@@ -293,7 +293,7 @@ $(document).ready(function () {
 			var $varFieldRef = $(this).closest(".tableBodyRow").find("[name*=treinamentoTbTreinamentos___]");
 			var fieldRefName = $varFieldRef.attr("name");
 			var indexFieldRef = fieldRefName.substr(fieldRefName.indexOf("___"));
-			$("input[name*=" + indexFieldRef + "] , select[name*=" + indexFieldRef + "], textarea[name*=" + indexFieldRef + "]").each(function() {
+			$("input[name*=" + indexFieldRef + "] , select[name*=" + indexFieldRef + "], textarea[name*=" + indexFieldRef + "]").each(function () {
 				$(this).remove();
 			});
 
@@ -326,10 +326,10 @@ $(document).ready(function () {
 		}
 		var regTreinamentos = $("#treinamentos table tbody tr.tableBodyRow:not(:first)");
 		if (regTreinamentos.length > 0) {
-			regTreinamentos.each(function(){
+			regTreinamentos.each(function () {
 				var $hasAvaliacaoReacao = $(this).closest(".tableBodyRow").find("input[name*=hasAvaliacaoReacao___]");
 				var $hasAvaliacaoReacaoName = $(this).closest(".tableBodyRow").find("input[name*=hasAvaliacaoReacaoName___]");
-				$hasAvaliacaoReacaoName.val( $hasAvaliacaoReacao.attr("name") );
+				$hasAvaliacaoReacaoName.val($hasAvaliacaoReacao.attr("name"));
 			});
 		}
 	}
@@ -661,10 +661,10 @@ function calculaSaldo() {
 	$('.valorGastoTbTreinamentos').each(function () {
 		fieldStatusValue = $(this).closest(".tableBodyRow").find('select[name*=statsTbTreinamentos___]').val();
 		fieldValorGastoValue = $(this).val();
-		fieldValorEstimativaValue = converteParaFloat( $(this).closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]').val() );
+		fieldValorEstimativaValue = converteParaFloat($(this).closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]').val());
 		fieldValorEstimativaValue = fieldStatusValue == "CANCELADO" ? 0 : fieldValorEstimativaValue;
-		somatoriaDespesas += ( fieldValorGastoValue == "0,00" || fieldValorGastoValue == "" ) && fieldStatusValue != "REALIZADO" ?
-		 						fieldValorEstimativaValue : converteParaFloat(fieldValorGastoValue);
+		somatoriaDespesas += (fieldValorGastoValue == "0,00" || fieldValorGastoValue == "") && fieldStatusValue != "REALIZADO" ?
+			fieldValorEstimativaValue : converteParaFloat(fieldValorGastoValue);
 	});
 	var valorOrcamento = converteParaFloat($("#orcamento").val());
 	var saldo = valorOrcamento - somatoriaDespesas;
@@ -732,7 +732,7 @@ function atualizaEstimativaStatus(combo) {
  */
 function checkIfHasDepartamento(participantesObj) {
 	for (var i = 0; i < participantesObj.length; i++) {
-		if ( participantesObj[i].matricula == "00000" ) {
+		if (participantesObj[i].matricula == "00000") {
 			return true;
 		}
 	}
@@ -818,17 +818,17 @@ function setSelectedZoomItem(selectedItem) {
 
 	if (selectedItem.inputName.indexOf("participanteFluig") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
+		var $participantesFieldId = $("[name*=" + zoomFieldName + "]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var zoomField = window[zoomFieldName];
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
 		participantes.add(tagData);
 		zoomField.clear();
 	}
-	
+
 	if (selectedItem.inputName.indexOf("funcionariosAtivos") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
+		var $participantesFieldId = $("[name*=" + zoomFieldName + "]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
 		var zoomField = window[zoomFieldName];
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var tagData = selectedItem.matricula + " - " + selectedItem.nome;
