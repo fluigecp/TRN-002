@@ -63,7 +63,7 @@ function displayFields(form, customHTML) {
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('condicoesOrcamentarias');
 		ocultaClasse('atualizarPlanejamentoContainer');
-
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		if (modo != "VIEW") {
@@ -78,6 +78,7 @@ function displayFields(form, customHTML) {
 		ocultaId('add-treinamento');
 		ocultaId('replicar-treinamento');
 		ocultaClasse('atualizarPlanejamentoContainer');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 	} else if (activity == 18) {
@@ -90,10 +91,7 @@ function displayFields(form, customHTML) {
 		ocultaClasse('btn-delete');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 	} else if (activity == 22) {
@@ -104,7 +102,7 @@ function displayFields(form, customHTML) {
 		ocultaClasse('btn-delete');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final
@@ -118,7 +116,7 @@ function displayFields(form, customHTML) {
 			ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final

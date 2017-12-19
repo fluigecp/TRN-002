@@ -22,15 +22,15 @@ function validaCampos(atividade, proximaAtividade) {
 	}
 
 	if ( atividade == 12 || atividade == 24 ) {
-		addHasFreeTable('input', 'treinamentoTbTreinamentos', 1);
-		addHasFreeTable('select', 'classificacaoTbTreinamentos', 1);
-		addHasFreeTable('textarea', 'justificativaTbTreinamentos', 1);
-		addHasFreeTable('input', 'qtdeParticipanteTbTreinamentos', 1);
-		addHasFreeTable('input', 'matriculasNomesTbTreinamentos', 1);
-		addHasFreeTable('input', 'entidadeSugeridaTbTreinamentos', 1);
-		addHasFreeTable('select', 'mesPrevistoTbTreinamentos', 1);
-		addHasFreeTable('input', 'cargaHorariaTbTreinamentos', 1);
-		addHasFreeTable('input', 'estimativaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'treinamentoTbTreinamentos', 1);
+		addHasFreeTable2('select', 'classificacaoTbTreinamentos', 1);
+		addHasFreeTable2('textarea', 'justificativaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'qtdeParticipanteTbTreinamentos', 1);
+		addHasFreeTable2('input', 'matriculasNomesTbTreinamentos', 1);
+		addHasFreeTable2('input', 'entidadeSugeridaTbTreinamentos', 1);
+		addHasFreeTable2('select', 'mesPrevistoTbTreinamentos', 1);
+		addHasFreeTable2('input', 'cargaHorariaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'estimativaTbTreinamentos', 1);
 		var regCount = $("#treinamentos table tbody tr.tableBodyRow:not(:first)").length;
 		if (regCount < 1) {
 			addHasFree('obsHistorico');
@@ -95,7 +95,7 @@ function validaCampos(atividade, proximaAtividade) {
 	}
 
 	if ( atividade == 35 ) {
-		addHasFreeTable('input','valorGastoTbTreinamentos', 1);
+		addHasFreeTable2('input','valorGastoTbTreinamentos', 1);
 		var atualizarPlanejamento = $("input[name='atualizarPlanejamento']:checked");
 		var treinamentosCancelados = [];
 		var blankStats = false;
@@ -129,7 +129,7 @@ function validaCampos(atividade, proximaAtividade) {
 		}
 
 		if ( atualizarPlanejamento.val() == "Não" ){
-			addHasFreeTable('select', 'statsTbTreinamentos', 1);
+			addHasFreeTable2('select', 'statsTbTreinamentos', 1);
 		}
 
 		// Justificar ao término da execução do planejamento, caso o saldo total ficar negativo.
