@@ -63,11 +63,7 @@ function displayFields(form,customHTML) {
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('condicoesOrcamentarias');
 		ocultaClasse('atualizarPlanejamentoContainer');
-		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		if (modo != "VIEW"){
@@ -83,11 +79,6 @@ function displayFields(form,customHTML) {
 		ocultaId('add-treinamento');
 		ocultaId('replicar-treinamento');
 		ocultaClasse('atualizarPlanejamentoContainer');
-		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 	}
@@ -116,10 +107,7 @@ function displayFields(form,customHTML) {
 		ocultaClasse('btn-delete');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final
@@ -134,10 +122,7 @@ function displayFields(form,customHTML) {
 			ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final

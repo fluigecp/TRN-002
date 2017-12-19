@@ -16,6 +16,13 @@
 		<link href="http://ecp.fluigcloud.com.br/portal/resources/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
 		<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
 		<script src="http://ecp.fluigcloud.com.br/portal/resources/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+		<!-- JQUERY DATATABLE -->
+
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+		
+	  	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
 		<!--<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/7.css' type='text/css' rel='stylesheet' />-->
 	</head>
 		<body class="fluig-style-guide">
@@ -158,23 +165,8 @@
 												<table class="table table-striped table-bordered table-hover table-condensed tb-treinamentos-width" noaddbutton="true" nodeletebutton="true" tablename="tbTreinamentos">
 													<thead>
 														<tr class="tableHeadRow">
-															<th style="width: .1%" class="tableColumn text-center lixeira">
-															</th>
-															<th style="width: 10%" class="tableColumn text-center">Treinamento <strong>*</strong></th>
-															<th style="width: 10%" class="tableColumn text-center">Classificação <strong>*</strong></th>
-															<th style="width: 15%" class="tableColumn text-center">Justificativa <strong>*</strong></th>
-															<th style="width: 4%" class="tableColumn text-center">Quantidade de participantes <strong>*</strong></th>
-															<th style="width: 15%" class="tableColumn text-center">Matrícula e nome dos participantes 
-																<span class="fluigicon fluigicon-sm bs-docs-popover-hover fluigicon-exclamation-sign"
-																data-toggle="popover" title="" data-content="Preencher este campo no formato Matrícula - Nome. Ao terminar de digitar a matrícula,
-																pressione hífen(-) para digitar o nome. Ao preencher departamentos, favor preencher no padrão 00000 - Nome do Departamento." data-original-title="Popover title"></span> <strong>*</strong>
-															</th>
-															<th style="width: 10%" class="tableColumn text-center">Entidade sugerida <strong>*</strong> </th>
-															<th style="width: 7%" class="tableColumn text-center">Mês previsto <strong>*</strong> </th>
-															<th style="width: 4%" class="tableColumn text-center">Carga Horária(Hrs)<strong>*</strong> </th>
-															<th style="width: 7%" class="tableColumn text-center">Estimativa (R$) <strong>*</strong> </th>
-															<th style="width: 8%" class="tableColumn text-center">Valor gasto (R$) <strong>*</strong> </th>
-															<th style="width: 8%" class="tableColumn text-center">Status <strong>*</strong> </th>
+															<th style="width: .1%" class="tableColumn text-center lixeira"></th>
+															<th class="tableColumn text-center">Dados do treinamento</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -187,121 +179,176 @@
 																</div>
 															</td>
 															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input name="treinamentoTbTreinamentos" class="form-control" id="treinamentoTbTreinamentos">
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<select name="classificacaoTbTreinamentos" class="form-control" id="classificacaoTbTreinamentos">
-																		<option value="legislacao_obrigatorio">Legislação/obrigatório</option>
-																		<option value="projeto_implantacao">Projeto/implantação</option>
-																		<option value="aprimoramento_profissional">Aprimoramento profissional</option>
-																	</select>
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<textarea name="justificativaTbTreinamentos" class="form-control expand" title="Clique para expandir" id="justificativaTbTreinamentos"></textarea>
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input type="text" name="qtdeParticipanteTbTreinamentos" class="form-control qtdeParticipanteTbTreinamentos" data-only-numbers="" id="qtdeParticipanteTbTreinamentos" mask="0000">
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input matriculasNomesTbTreinamentosContainer">
-																	<textarea name="matriculasNomesTbTreinamentosV" class="form-control expand matriculasNomesTbTreinamentosView" id="matriculasNomesTbTreinamentosV" readonly></textarea>
-																	<input type="text" name="matriculasNomesTbTreinamentos" class="form-control expand matriculasNomesTbTreinamentos" placeholder="Matrícula - Nome" id="matriculasNomesTbTreinamentos">
-																	<input type="hidden" name="tagControl" id="tagControl"/>
-																</div>
-												
-																<div class="form-input participanteFluigContainer" style="margin-top: 20px;">
-																		<input name="participanteFluig" id="participanteFluig" class="form-control" placeholder="Usuário Fluig?" type="zoom" data-zoom="{
-																			'displayKey':'colleagueName',
-																			'datasetId':'colleague',
-																			'filterValues': 'active,true',
-																			'placeholder':'Usuário Fluig?',
-																			'fields':[
-																				{'field':'colleagueId', 'label':'Matrícula', 'standard':'true'},
-																				{'field':'colleagueName', 'label':'Nome'}
-																				]
-																		}">
-																</div>
-
 																
-																<div class="form-input funcionariosAtivosContainer" style="margin-top: 20px;">
-																	<input name="funcionariosAtivos" class="form-control" id="funcionariosAtivos" type="zoom" data-zoom="{
-																		'displayKey':'nome',
-																		'datasetId':'wsFuncionarios',
-																		'placeholder':'Pesquisa por nome de funcionário',
-																		'filterValues': 'situacao,Ativo',
-																		'fields':[
-																			{'field':'matricula', 'label':'ID', 'standard':'true'},
-																			{'field':'nome', 'label':'Nome'},
-																			{'field':'lotacao', 'label':'Lotação'}
-																			]
-																		}">
+																<div class="row">
+																	<div class="col-md-8 col-xs-12">
+																		<div class="form-input">
+																			<label>Título do treinamento<strong> *</strong></label>
+																			<input name="treinamentoTbTreinamentos" class="form-control" id="treinamentoTbTreinamentos">
+																		</div>
+																	</div>
+																	<div class="col-md-4 col-xs-12">	
+																		<div class="form-input">
+																			<label>Classificação<strong> *</strong></label>
+																			<select name="classificacaoTbTreinamentos" class="form-control" id="classificacaoTbTreinamentos">
+																				<option value="legislacao_obrigatorio">Legislação/obrigatório</option>
+																				<option value="projeto_implantacao">Projeto/implantação</option>
+																				<option value="aprimoramento_profissional">Aprimoramento profissional</option>
+																			</select>
+																		</div>
+																	</div>
 																</div>
 
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input type="text" name="entidadeSugeridaTbTreinamentos" class="form-control" id="entidadeSugeridaTbTreinamentos">
+																<div class="row">
+																	<div class="col-md-9 col-xs-12">
+																		<div class="form-input">
+																			<label>Justificativa<strong> *</strong></label>
+																			<textarea name="justificativaTbTreinamentos" class="form-control expand" title="Clique para expandir" id="justificativaTbTreinamentos"></textarea>
+																		</div>
+																	</div>
+
+																	<div class="col-md-3 col-xs-12">
+																		<div class="form-input">
+																			<label>Quantidade de participantes</label>
+																			<input type="text" name="qtdeParticipanteTbTreinamentos" class="form-control qtdeParticipanteTbTreinamentos" data-only-numbers="" id="qtdeParticipanteTbTreinamentos" mask="0000">
+																		</div>
+																	</div>
 																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<select name="mesPrevistoTbTreinamentos" class="form-control" id="mesPrevistoTbTreinamentos">
-																		<option value="Janeiro">Janeiro</option>
-																		<option value="Fevereiro">Fevereiro</option>
-																		<option value="Março">Março</option>
-																		<option value="Abril">Abril</option>
-																		<option value="Maio">Maio</option>
-																		<option value="Junho">Junho</option>
-																		<option value="Julho">Julho</option>
-																		<option value="Agosto">Agosto</option>
-																		<option value="Setembro">Setembro</option>
-																		<option value="Outubro">Outubro</option>
-																		<option value="Novembro">Novembro</option>
-																		<option value="Dezembro">Dezembro</option>
-																	</select>
+																
+																<div class="row">
+																	
+																	<div class="col-md-12">
+																		<div class="form-input participanteFluigContainer" style="margin-top: 20px;">
+																				<label>Pesquisa por usuário fluig </label>
+																				<span class="fluigicon fluigicon-sm bs-docs-popover-hover fluigicon-exclamation-sign"
+																				data-toggle="popover" title="" data-content="Se caso o participante do treinamento possuir cadastro no Fluig, ele pode ser localizado de forma mais prática por este campo." data-original-title="Popover title"></span>
+																				<input name="participanteFluig" id="participanteFluig" class="form-control" placeholder="Usuário Fluig?" type="zoom" data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues': 'active,true',
+																					'placeholder':'Usuário Fluig?',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'Matrícula', 'standard':'true'},
+																						{'field':'colleagueName', 'label':'Nome'}
+																						]
+																				}">
+																		</div>
+																	</div>
+																	
+																	<div class="col-md-12">
+																		<div class="form-input funcionariosAtivosContainer" style="margin-top: 20px;">
+																			<label>Pesquisa por usuário Humanus </label>
+																			<span class="fluigicon fluigicon-sm bs-docs-popover-hover fluigicon-exclamation-sign"
+																			data-toggle="popover" title="" data-content="O funcionário pode ser localizado diretamente no sistema Humanus, por meio deste campo." data-original-title="Popover title"></span>
+																			<input name="funcionariosAtivos" class="form-control" id="funcionariosAtivos" type="zoom" data-zoom="{
+																				'displayKey':'nome',
+																				'datasetId':'wsFuncionarios',
+																				'placeholder':'Pesquisa por nome de funcionário',
+																				'filterValues': 'situacao,Ativo',
+																				'fields':[
+																					{'field':'matricula', 'label':'ID', 'standard':'true'},
+																					{'field':'nome', 'label':'Nome'},
+																					{'field':'lotacao', 'label':'Lotação'}
+																					]
+																				}">
+																		</div>
+																	</div>
+
+																	<div class="col-md-12"  style="margin-top: 20px;">
+																		<div class="form-input matriculasNomesTbTreinamentosContainer">
+																				<label>Matrícula e nome dos participantes<strong> * </strong></label>
+																				<span class="fluigicon fluigicon-sm bs-docs-popover-hover fluigicon-exclamation-sign"
+																				data-toggle="popover" title="" data-content="Preencher este campo no formato Matrícula - Nome. Ao terminar de digitar a matrícula,
+																				 pressione hífen(-) para digitar o nome. Ao preencher departamentos, favor preencher no padrão 00000 - Nome do Departamento." data-original-title="Popover title"></span>
+																				<textarea name="matriculasNomesTbTreinamentosV" class="form-control expand matriculasNomesTbTreinamentosView" id="matriculasNomesTbTreinamentosV" readonly></textarea>
+																				<input type="text" name="matriculasNomesTbTreinamentos" class="form-control expand matriculasNomesTbTreinamentos" placeholder="Matrícula - Nome" id="matriculasNomesTbTreinamentos">
+																				<input type="hidden" name="tagControl" id="tagControl"/>
+																		</div>
+																	</div>
+
 																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input type="text" name="cargaHorariaTbTreinamentos" class="form-control cargaHorariaTbTreinamentos" id="cargaHorariaTbTreinamentos" mask="0000">
+
+																<div class="row">
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Entidade sugerida<strong> *</strong></label>
+																			<input type="text" name="entidadeSugeridaTbTreinamentos" class="form-control" id="entidadeSugeridaTbTreinamentos">
+																		</div>
+																	</div>
+
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Mês previsto<strong> *</strong></label>
+																			<select name="mesPrevistoTbTreinamentos" class="form-control" id="mesPrevistoTbTreinamentos">
+																				<option value="Janeiro">Janeiro</option>
+																				<option value="Fevereiro">Fevereiro</option>
+																				<option value="Março">Março</option>
+																				<option value="Abril">Abril</option>
+																				<option value="Maio">Maio</option>
+																				<option value="Junho">Junho</option>
+																				<option value="Julho">Julho</option>
+																				<option value="Agosto">Agosto</option>
+																				<option value="Setembro">Setembro</option>
+																				<option value="Outubro">Outubro</option>
+																				<option value="Novembro">Novembro</option>
+																				<option value="Dezembro">Dezembro</option>
+																			</select>
+																		</div>
+																	</div>
+																	
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Carga horária<strong> *</strong></label>
+																			<input type="text" name="cargaHorariaTbTreinamentos" class="form-control cargaHorariaTbTreinamentos" id="cargaHorariaTbTreinamentos" mask="0000">
+																		</div>
+																	</div>
+
 																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input type="text" name="estimativaTbTreinamentos" class="form-control estimativaTbTreinamentos" id="estimativaTbTreinamentos" mask="#00.000.000.000.000,00">
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<input type="text" name="valorGastoTbTreinamentos" class="form-control valorGastoTbTreinamentos" id="valorGastoTbTreinamentos" mask="#00.000.000.000.000,00">
-																</div>
-															</td>
-															<td class="fs-v-align-middle">
-																<div class="form-input">
-																	<select name="statsTbTreinamentos" class="form-control statusTbTreinamentos" id="statusTbTreinamentos" value="">
-																		<option value=""> -- </option>
-																		<option value="CANCELADO">CANCELADO</option>
-																		<option value="REALIZADO">REALIZADO</option>
-																	</select>
-																	<input type="hidden" name="cancelamentoJustificado" class="form-control statusJustificadoTbTreinamentos" id="statusJustificadoTbTreinamentos" value="NAO">
-																	<input type="hidden" name="hasAvaliacaoReacao" id="hasAvaliacaoReacao" value="NAO">
-																	<input type="hidden" name="hasAvaliacaoReacaoName" id="hasAvaliacaoReacaoName">
+
+																<div class="row">
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Valor estimado(R$)<strong> *</strong></label>
+																			<input type="text" name="estimativaTbTreinamentos" class="form-control estimativaTbTreinamentos" id="estimativaTbTreinamentos" mask="#00.000.000.000.000,00">
+																		</div>
+																	</div>
+
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Valor gasto(R$)<strong> *</strong></label>
+																			<input type="text" name="valorGastoTbTreinamentos" class="form-control valorGastoTbTreinamentos" id="valorGastoTbTreinamentos" mask="#00.000.000.000.000,00">
+																		</div>
+																	</div>
+																	
+																	<div class="col-md-4 col-xs-12">
+																		<div class="form-input">
+																			<label>Status do treinamento<strong> *</strong></label>
+																			<select name="statsTbTreinamentos" class="form-control statusTbTreinamentos" id="statusTbTreinamentos" value="">
+																				<option value=""> -- </option>
+																				<option value="CANCELADO">CANCELADO</option>
+																				<option value="REALIZADO">REALIZADO</option>
+																			</select>
+																			<input type="hidden" name="cancelamentoJustificado" class="form-control statusJustificadoTbTreinamentos" id="statusJustificadoTbTreinamentos" value="NAO">
+																			<input type="hidden" name="hasAvaliacaoReacao" id="hasAvaliacaoReacao" value="NAO">
+																			<input type="hidden" name="hasAvaliacaoReacaoName" id="hasAvaliacaoReacaoName">
+																		</div>
+																	</div>
 																</div>
 															</td>
 														</tr>
 													</tbody>
 												</table>
 											</div>
-											<button class="btn btn-primary btn-insert" id="add-treinamento" type="button">Adicionar treinamento</button>
-											<button class="btn btn-primary btn-insert" id="replicar-treinamento" type="button">Copiar última linha</button>
+
+											<div class="row buttons-row-container">
+												<div class="col-md-4 col-xs-12">
+													<button class="btn btn-primary btn-insert" id="add-treinamento" type="button">Adicionar treinamento</button>
+												</div>
+												<div class="col-md-4 col-xs-12">
+														<button class="btn btn-primary btn-insert" id="replicar-treinamento" type="button">Copiar última linha</button>
+												</div>
+											</div>
+											
 											<table class="table table-stripped table-hover table-condensed table-bordered table-saldos" id="tabTotalEstimadoQtde" style="margin-top: 25px;">
 												<tbody>
 													<tr>

@@ -89,6 +89,24 @@ $(document).ready(function () {
 		}
 	});
 
+	//Init Datatables
+	$("table[tablename=tbTreinamentos]").DataTable( {
+		scrollY: '100vmin',
+		scrollX: '100%',
+		scrollCollapse: true,
+		paging: false,
+		searching: false,
+		ordering: false,
+		info: false,
+	} );
+
+	// Init popovers
+
+	FLUIGC.popover('.bs-docs-popover-hover', {
+		trigger: 'hover',
+		placement: 'auto'
+	});
+
 
 
 	/** Início - Life Cycle */
@@ -104,6 +122,8 @@ $(document).ready(function () {
 				updateAutoCompleteWithLimit(this);
 			}
 		});
+
+
 
 		if (activity != 12 && activity != 24) {
 			$(".qtdeParticipanteTbTreinamentos").each(function () {
@@ -165,12 +185,6 @@ $(document).ready(function () {
 			$(this).closest(".tableBodyRow").find(".matriculasNomesTbTreinamentosView").val(textWithSpace);
 		});
 
-		//habilitar popovers
-		FLUIGC.popover('.bs-docs-popover-hover', {
-			trigger: 'hover',
-			placement: 'auto'
-		});
-
 		// adiciona um elemento na tabela e atualiza os campos de autocomplete
 		$('button#add-treinamento').click(function (event) {
 			var row = wdkAddChild('tbTreinamentos');
@@ -191,7 +205,7 @@ $(document).ready(function () {
 			/*$(".qtdeParticipanteTbTreinamentos:not(:first)").each(function () {
 				updateAutoCompleteWithLimit(this);
 			});*/
-			updateAutoCompleteWithLimit( $(" #qtdeParticipanteTbTreinamentos___" + row ) );
+			updateAutoCompleteWithLimit( $("#qtdeParticipanteTbTreinamentos___" + row ) );
 			$(".statusTbTreinamentos").each(function () {
 				var currentStatus = $(this);
 				if (currentStatus.val() == "REALIZADO" || currentStatus.val() == "CANCELADO")
@@ -309,12 +323,6 @@ $(document).ready(function () {
 					$(self).closest(".tableBodyRow").find(".matriculasNomesTbTreinamentosView").show();
 				}
 			});
-			if ($("#previous_activity").val() == 35) {
-				$('.tableHeadRow .tableColumn:nth-last-child(1)').css("display", "table-cell");
-				$('.tableBodyRow td:nth-last-child(1)').css("display", "table-cell");
-				$('.tableHeadRow .tableColumn:nth-last-child(2)').css("display", "table-cell");
-				$('.tableBodyRow td:nth-last-child(2)').css("display", "table-cell");
-			}
 		}
 		var regTreinamentos = $("#treinamentos table tbody tr.tableBodyRow:not(:first)");
 		if (regTreinamentos.length > 0) {
@@ -339,7 +347,7 @@ $(document).ready(function () {
 		});
 		$('.valorGastoTbTreinamentos').each(function () {
 			if ($(this).val() != "") {
-				var statusField = $(this).closest('.fs-v-align-middle').next().find('select');
+				var statusField = $(this).closest('.tableBodyRow').find('select[name*=statsTbTreinamentos___]');
 				if (statusField.val() == "REALIZADO" || statusField.val() == "CANCELADO") {
 					$(this).attr('readonly', true);
 				}
@@ -544,7 +552,7 @@ function updateEstimativaTotal() {
 	var status;
 	$.each(elementos, function () {
 		current = converteParaFloat(this.value);
-		status = $(this).closest(".fs-v-align-middle").next().next().find('select').val();
+		status = $(this).closest(".tableBodyRow").find('select[name*=statsTbTreinamentos___]').val();
 		current = status == "CANCELADO" ? current * -1 : current;
 		estimativaTotal += current < current * -1 ? 0 : current;
 	});
@@ -571,7 +579,7 @@ function updateGastoTotal() {
  */
 
 function updateAutoCompleteWithLimit(element) {
-	var autoCompleteFieldId = $(element).closest(".fs-v-align-middle").next().find('input').attr('id');
+	var autoCompleteFieldId = $(element).closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr('id');
 	var maxTag = $(element).val() == "" ? "0" : $(element).val();
 	var autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId);
 	autoComplete.destroy();
@@ -651,9 +659,9 @@ function calculaSaldo() {
 	var fieldValorEstimativaValue = 0;
 	var fieldStatusValue = "";
 	$('.valorGastoTbTreinamentos').each(function () {
-		fieldStatusValue = $(this).closest(".fs-v-align-middle").next().find('select').val();
+		fieldStatusValue = $(this).closest(".tableBodyRow").find('select[name*=statsTbTreinamentos___]').val();
 		fieldValorGastoValue = $(this).val();
-		fieldValorEstimativaValue = converteParaFloat($(this).closest(".fs-v-align-middle").prev().find('input').val());
+		fieldValorEstimativaValue = converteParaFloat( $(this).closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]').val() );
 		fieldValorEstimativaValue = fieldStatusValue == "CANCELADO" ? 0 : fieldValorEstimativaValue;
 		somatoriaDespesas += ( fieldValorGastoValue == "0,00" || fieldValorGastoValue == "" ) && fieldStatusValue != "REALIZADO" ?
 		 						fieldValorEstimativaValue : converteParaFloat(fieldValorGastoValue);
@@ -679,9 +687,9 @@ function calculaSaldo() {
 function atualizaEstimativaStatus(combo) {
 	var currentValorEstimativa, estimativa, comboValue;
 	//obtém o valor da estimativa
-	currentValorEstimativa = combo.closest(".fs-v-align-middle").prev().prev().find('input');
+	currentValorEstimativa = combo.closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos___]');
 	//obtém o valor gasto no treinamento
-	currentValorGasto = combo.closest(".fs-v-align-middle").prev().find('input');
+	currentValorGasto = combo.closest(".tableBodyRow").find('input[name*=valorGastoTbTreinamentos___]');
 	comboValue = combo.val();
 	if (comboValue == "") {
 		combo.removeClass("has-success has-error");
@@ -810,7 +818,7 @@ function setSelectedZoomItem(selectedItem) {
 
 	if (selectedItem.inputName.indexOf("participanteFluig") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".form-input").prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var zoomField = window[zoomFieldName];
 		var tagData = selectedItem.colleagueId + " - " + selectedItem.colleagueName;
@@ -820,7 +828,7 @@ function setSelectedZoomItem(selectedItem) {
 	
 	if (selectedItem.inputName.indexOf("funcionariosAtivos") !== -1) {
 		var zoomFieldName = selectedItem.inputName;
-		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".form-input").prev().prev().find(".matriculasNomesTbTreinamentos").attr("id");
+		var $participantesFieldId = $("[name*="+ zoomFieldName +"]").closest(".tableBodyRow").find("input[name*=matriculasNomesTbTreinamentos]").attr("id");
 		var zoomField = window[zoomFieldName];
 		var participantes = FLUIGC.autocomplete("#" + $participantesFieldId);
 		var tagData = selectedItem.matricula + " - " + selectedItem.nome;
