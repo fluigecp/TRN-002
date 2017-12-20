@@ -55,7 +55,7 @@ var calculateModule = (function () {
             current = status == "CANCELADO" ? current * -1 : current;
             estimativaTotal += current < current * -1 ? 0 : current;
         });
-        $('#totalEstimativa').val(numbersAndCurrency.convert.currencyStringToFloat(estimativaTotal));
+        $('#totalEstimativa').val(numbersAndCurrency.convert.numberToCurrency(estimativaTotal));
     };
 
     /**
