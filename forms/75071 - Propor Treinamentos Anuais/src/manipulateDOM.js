@@ -250,7 +250,18 @@ var manipulateDOM = (function(){
         autoComplete.destroy();
         var autoComplete = FLUIGC.autocomplete("#" + autoCompleteFieldId, {
             maxTags: maxTag,
-            onMaxTags: _autocompleteListeners.maxtagAction
+            onMaxTags: function(item, tag) {
+                if ($(element).val() != "") {
+                    if (!($(".alert-danger").length > 0)) {
+                        FLUIGC.toast({
+                            message: 'Limite de participantes atingido.',
+                            type: 'danger'
+                        });
+                    }
+                } else {
+                    return false;
+                }
+            }
         });
         /**
          * @description Máscara para o campo de Nome(apenas letras) - Matrícula(apenas número).
@@ -277,18 +288,6 @@ var manipulateDOM = (function(){
     };
 
     var _autocompleteListeners = {
-        maxtagAction: function(item, tag) {
-            if ($(element).val() != "") {
-                if (!($(".alert-danger").length > 0)) {
-                    FLUIGC.toast({
-                        message: 'Limite de participantes atingido.',
-                        type: 'danger'
-                    });
-                }
-            } else {
-                return false;
-            }
-        },
 
         blurAction: function() {
             $(".alert-danger").remove();
