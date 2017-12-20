@@ -266,8 +266,8 @@ var lifecycle = (function () {
                     var myTagParticipantes = FLUIGC.autocomplete("#" + participantesIdField);
                     var myTagParticipantesArray = myTagParticipantes.items();
                     var totalParticipantes = $("[name=" + participantesIdField + "]").closest(".tableBodyRow").find(".qtdeParticipanteTbTreinamentos").val();
-                    var participantesObj = filterParticipantesObj(myTagParticipantesArray);
-                    var hasDepartamento = checkIfHasDepartamento(participantesObj);
+                    var participantesObj = manipulateDOM.filterParticipantesObj(myTagParticipantesArray);
+                    var hasDepartamento = manipulateDOM.checkIfHasDepartamento(participantesObj);
                     var $tagControl = $("[name=" + participantesIdField + "]").closest(".tableBodyRow").find("[name*=tagControl___]");
                     console.log("tagControl: ", $tagControl);
                     if (hasDepartamento) {
