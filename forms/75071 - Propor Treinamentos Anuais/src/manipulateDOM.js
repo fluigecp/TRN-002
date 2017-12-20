@@ -6,6 +6,23 @@ var manipulateDOM = (function(){
     "use strict";
     /** Listener events */
     var actions4Listeners = {
+
+        expandTextareaListener: function (event) {
+            event.preventDefault();
+            var type = $(this).prop('tagName');
+            var classe = ($(this).attr('class')).indexOf('expand');
+            $(this).css('resize', 'none');
+            if (classe > -1) {
+                $(this).show('slow', function () {
+                    $(this).css({
+                        'display': 'block',
+                        'overflow-y': 'hidden'
+                    });
+                    expandTextarea(this.id);
+                });
+            }
+        }, 
+
         updateClassificacaoTreinamentosCountFields: function() {
             var treinamentos = $("#treinamentos table tbody tr.tableBodyRow:not(:first-child)");
             var qtdeAprimoramento = 0,
@@ -31,7 +48,127 @@ var manipulateDOM = (function(){
             $("#fato_6").val(qtdeAprimoramento);
         },
 
+        tableTreinamento: {
+            add: function (event) {
+                    var row = wdkAddChild('tbTreinamentos');
+                    $("#statusTbTreinamentos___" + row).val("");
+                    $("#cancelamentoJustificado___" + row).val("NAO");
+                    $("#hasAvaliacaoReacao___" + row).val("NAO");
+                    $("#hasAvaliacaoReacaoName___" + row).val("hasAvaliacaoReacao___" + row);
+                    $("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
+                    $("#valorGastoTbTreinamentos___" + row).css({
+                        "pointer-events": "none",
+                        "touch-action": "none"
+                    });
+                    $("#statsTbTreinamentos___" + row).attr("readonly", true);
+                    $("#statsTbTreinamentos___" + row).css({
+                        "pointer-events": "none",
+                        "touch-action": "none"
+                    });
 
+                    updateAutoCompleteWithLimit($("#qtdeParticipanteTbTreinamentos___" + row));
+                    $(".statusTbTreinamentos").each(function () {
+                        var currentStatus = $(this);
+                        if (currentStatus.val() == "REALIZADO" || currentStatus.val() == "CANCELADO")
+                            manipulateDOM.disableAutoCompleteField(currentStatus);
+                    });
+
+                    manipulateDOM.actions4Listeners.initSomething.masks();
+                    manipulateDOM.actions4Listeners.initSomething.popover();
+                },
+
+            replicar: function (event) {
+                //Obter todas as linhas da tabela de treinamento, desconsiderando a primeira
+                var regCount = $("#treinamentos table tbody tr.tableBodyRow:not(:first)").length;
+                if (regCount > 0) {
+                    var row = wdkAddChild('tbTreinamentos');
+                    var linhaAnterior = $("#treinamentoTbTreinamentos___" + row).closest(".tableBodyRow").prev();
+                    $("#statusTbTreinamentos___" + row).val("");
+                    $("#cancelamentoJustificado___" + row).val("NAO");
+                    $("#hasAvaliacaoReacao___" + row).val("NAO");
+                    $("#hasAvaliacaoReacaoName___" + row).val("hasAvaliacaoReacao___" + row);
+                    $("#treinamentoTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="treinamentoTbTreinamentos___"]').val());
+                    $("#classificacaoTbTreinamentos___" + row).val(linhaAnterior.find('select[name*="classificacaoTbTreinamentos___"]').val());
+                    $("#justificativaTbTreinamentos___" + row).val(linhaAnterior.find('textarea[name*="justificativaTbTreinamentos___"]').val());
+                    $("#qtdeParticipanteTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="qtdeParticipanteTbTreinamentos___"]').val());
+                    var auto = manipulateDOM.updateAutoCompleteWithLimit($(" #qtdeParticipanteTbTreinamentos___" + row));
+                    auto.add(linhaAnterior.find('input[name*="matriculasNomesTbTreinamentos___"]').val());
+                    $("#entidadeSugeridaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="entidadeSugeridaTbTreinamentos___"]').val());
+                    $("#mesPrevistoTbTreinamentos___" + row).val(linhaAnterior.find('select[name*="mesPrevistoTbTreinamentos___"]').val());
+                    $("#estimativaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="estimativaTbTreinamentos___"]').val());
+                    $("#cargaHorariaTbTreinamentos___" + row).val(linhaAnterior.find('input[name*="cargaHorariaTbTreinamentos___"]').val());
+                    $("#valorGastoTbTreinamentos___" + row).attr("readonly", true);
+                    $("#valorGastoTbTreinamentos___" + row).css({
+                        "pointer-events": "none",
+                        "touch-action": "none"
+                    });
+                    $("#statsTbTreinamentos___" + row).attr("readonly", true);
+                    $("#statsTbTreinamentos___" + row).css({
+                        "pointer-events": "none",
+                        "touch-action": "none"
+                    });
+                    $(".statusTbTreinamentos").each(function () {
+                        var currentStatus = $(this);
+                        if (currentStatus.val() == "REALIZADO" || currentStatus.val() == "CANCELADO")
+                            manipulateDOM.disableAutoCompleteField(currentStatus);
+                    });
+                    // Atualizar somatórias
+                    calculateModule.updateQtdeTotal();
+                    calculateModule.updateCargaHorariaTotal();
+                    calculateModule.updateEstimativaTotal();
+                    if (activity == 24) {
+                        calculateModule.calculaSaldo();
+                    }
+                    
+                    manipulateDOM.actions4Listeners.initSomething.masks();
+                    manipulateDOM.actions4Listeners.initSomething.popover();
+                }
+            },
+
+            remover: function () {
+                var indexItem = $(this);
+                var $varFieldRef = $(this).closest(".tableBodyRow").find("[name*=treinamentoTbTreinamentos___]");
+                var fieldRefName = $varFieldRef.attr("name");
+                var indexFieldRef = fieldRefName.substr(fieldRefName.indexOf("___"));
+                $("input[name*=" + indexFieldRef + "] , select[name*=" + indexFieldRef + "], textarea[name*=" + indexFieldRef + "]").each(function () {
+                    $(this).remove();
+                });
+    
+                fnWdkRemoveChild(this);
+                // Atualizar somatórias
+                calculateModule.updateQtdeTotal();
+                calculateModule.updateCargaHorariaTotal();
+                calculateModule.updateEstimativaTotal();
+                if (activity == 24) {
+                    calculateModule.calculaSaldo();
+                }
+            }
+        },
+
+        initSomething: {
+            dataTable: function() {
+                $("table[tablename=tbTreinamentos]").DataTable({
+                    scrollY: '100vmin',
+                    scrollX: '100%',
+                    scrollCollapse: true,
+                    paging: false,
+                    searching: false,
+                    ordering: false,
+                    info: false,
+                });
+            },
+            masks: function() {
+                var inputs = $("[mask]");
+                MaskEvent.initMask(inputs);
+            },
+
+            popover: function() {
+                FLUIGC.popover('.bs-docs-popover-hover', {
+                    trigger: 'hover',
+                    placement: 'auto'
+                });
+            }
+        }
     };
 
     /**
@@ -45,7 +182,7 @@ var manipulateDOM = (function(){
         $("#numeroOrcamentarioDepartamento").val("");
         $("#guardaArea").val("");
         reloadZoomFilterValues('departamento', 'areaOrcamento,areaOrcamento');
-    }
+    };
 
     /**
      * @description Atualiza o valor da estimativa de acordo com o status selecionado.
@@ -98,7 +235,7 @@ var manipulateDOM = (function(){
             calculateModule.calculaSaldo();
             calculateModule.updateGastoTotal();
         }, 300);
-    }
+    };
 
     /**
      * 	@description Atualiza os campos de autocomplete e esconde os campos de autocomplete gerados 
@@ -128,6 +265,15 @@ var manipulateDOM = (function(){
          _autocompleteListeners.foreachAction);
          
         return autoComplete;
+    };
+
+    /**
+     *  @description Desabilita o campo de autocomplete quando for necessário
+     * 	@param element - Qualquer elemento da linha da tabela que será desabilitada o campo 
+     * 	de autoComplete(Nomes dos participantes dos treinamentos)
+     */
+    var disableAutoCompleteField = function(element) {
+        $(element).closest(".tableBodyRow").find(".bootstrap-tagsinput, .participanteFluigContainer").remove();
     };
 
     var _autocompleteListeners = {
@@ -291,4 +437,17 @@ var manipulateDOM = (function(){
     };
 
     //Fim do histórico
+
+    return {
+        actions4Listeners: actions4Listeners,
+        cleanAllFieldsRelatedArea: cleanAllFieldsRelatedArea,
+        atualizaEstimativaStatus: atualizaEstimativaStatus,
+        updateAutoCompleteWithLimit: updateAutoCompleteWithLimit,
+        disableAutoCompleteField: disableAutoCompleteField,
+        checkIfHasDepartamento: checkIfHasDepartamento,
+        filterParticipantesObj: filterParticipantesObj,
+        zoomFields: zoomFields,
+        expandTextarea: expandTextarea,
+        mostraHistorico: mostraHistorico
+    }
 })();
