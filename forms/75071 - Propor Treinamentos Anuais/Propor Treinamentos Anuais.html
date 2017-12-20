@@ -600,15 +600,15 @@
 					<h2>Última atualização</h2>
 					<div class="row">
 						<div class="col-md-12">
-							<textarea class="txthistory" cols="300" data-size="big" id="ultimaAtualizacao" name="ultimaAtualizacao" onclick="expandTextarea('ultimaAtualizacao')"
+							<textarea class="txthistory" cols="300" data-size="big" id="ultimaAtualizacao" name="ultimaAtualizacao" onclick="manipulateDOM.expandTextarea('ultimaAtualizacao')"
 							    readonly="readonly" rows="3" style="cursor: pointer" type="textarea"></textarea>
 						</div>
 					</div>
 					<hr>
 					<br>
-					<textarea class="txthistory" cols="300" data-size="big" id="historico" name="historico" onclick="expandTextarea('historico')"
+					<textarea class="txthistory" cols="300" data-size="big" id="historico" name="historico" onclick="manipulateDOM.expandTextarea('historico')"
 					    readonly="readonly" rows="10" style="overflow-y: auto; cursor: pointer; display: none;" type="textarea"></textarea>
-					<button class="btn btn-primary" id="btnhistorico2" name="botaoHistorico2" onclick="mostraHistorico();" type="button">
+					<button class="btn btn-primary" id="btnhistorico2" name="botaoHistorico2" onclick="manipulateDOM.mostraHistorico();" type="button">
 						Histórico
 					</button>
 					<br>
@@ -619,9 +619,28 @@
 			<!-- FIM HISTORICO -->
 		</form>
 	</div>
-	<script type="text/javascript" src="validacao.js"></script>
+<!-- 	<script type="text/javascript" src="validacao.js"></script>
 	<script type="text/javascript" src="formValidate.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	
+	
+	<script type="text/javascript" src="app.js"></script> -->
+
+		<!-- VALIDAÇÕES -->
+		<script type="text/javascript" src="validacao.js"></script>
+		<script type="text/javascript" src="formValidate.js"></script>
+		<!-- MODULES -->
+		<script type="text/javascript" src="src/dateFunctions.js"></script>
+		<script type="text/javascript" src="src/numbersAndCurrency.js"></script>
+		<script type="text/javascript" src="src/services.js"></script>
+		<script type="text/javascript" src="src/calculateModule.js"></script>
+		<script type="text/javascript" src="src/manipulateDOM.js"></script>
+		<script type="text/javascript" src="src/lifecycle.js"></script>
+		<!-- APP -->
+		<script type="text/javascript" src="app-refact.js"></script>
+	
+		<!-- MIN.JS 
+			<script type="text/javascript" src="dist/all.min.js"></script>
+			-->
 </body>
 
 </html>
