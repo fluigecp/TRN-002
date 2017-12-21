@@ -224,7 +224,9 @@
 
 														<div class="col-md-3 col-xs-12">
 															<div class="form-input">
-																<label>Quantidade de participantes<strong> *</strong> </label>
+																<label>Quantidade de participantes
+																	<strong> *</strong>
+																</label>
 																<input type="text" name="qtdeParticipanteTbTreinamentos" class="form-control qtdeParticipanteTbTreinamentos" data-only-numbers=""
 																    id="qtdeParticipanteTbTreinamentos" mask="0000">
 															</div>
@@ -331,13 +333,13 @@
 														</div>
 
 														<div class="col-md-3 col-xs-12">
-																<div class="form-input">
-																	<label>Valor estimado(R$)
-																		<strong> *</strong>
-																	</label>
-																	<input type="text" name="estimativaTbTreinamentos" class="form-control estimativaTbTreinamentos" id="estimativaTbTreinamentos"
-																		mask="#00.000.000.000.000,00">
-																</div>
+															<div class="form-input">
+																<label>Valor estimado(R$)
+																	<strong> *</strong>
+																</label>
+																<input type="text" name="estimativaTbTreinamentos" class="form-control estimativaTbTreinamentos" id="estimativaTbTreinamentos"
+																    mask="#00.000.000.000.000,00">
+															</div>
 														</div>
 
 													</div>
@@ -409,8 +411,8 @@
 												<div class="form-input">
 													<label for="totalEstimativa">Valor total da estimativa</label>&nbsp;&nbsp;
 													<span>R$</span>&nbsp;
-													<input type="text" class="txt-right fs-cursor-inherit fs-no-bg fs-no-border fs-no-shadow" name="totalEstimativa"
-													    id="totalEstimativa" mask="#00.000.000.000.000,00" readonly/>
+													<input type="text" class="txt-right fs-cursor-inherit fs-no-bg fs-no-border fs-no-shadow" name="totalEstimativa" id="totalEstimativa"
+													    mask="#00.000.000.000.000,00" readonly/>
 												</div>
 											</td>
 										</tr>
@@ -583,9 +585,7 @@
 					<div class="form-field" data-type="textarea" data-show-properties="" data-field-name="obsHistorico">
 						<div class="form-input">
 							<div class="form-group">
-								<label>Observações
-									<strong style="display: none;"> *</strong>
-								</label>
+								<label>Observações</label>
 								<textarea name="obsHistorico" id="obsHistorico" style="resize: vertical" onkeyup="expandTextarea(this.id)" class="form-control"
 								    rows="3" data-size="big" placeholder=""></textarea>
 							</div>
@@ -600,15 +600,15 @@
 					<h2>Última atualização</h2>
 					<div class="row">
 						<div class="col-md-12">
-							<textarea class="txthistory" cols="300" data-size="big" id="ultimaAtualizacao" name="ultimaAtualizacao" onclick="expandTextarea('ultimaAtualizacao')"
+							<textarea class="txthistory" cols="300" data-size="big" id="ultimaAtualizacao" name="ultimaAtualizacao" onclick="manipulateDOM.expandTextarea('ultimaAtualizacao')"
 							    readonly="readonly" rows="3" style="cursor: pointer" type="textarea"></textarea>
 						</div>
 					</div>
 					<hr>
 					<br>
-					<textarea class="txthistory" cols="300" data-size="big" id="historico" name="historico" onclick="expandTextarea('historico')"
+					<textarea class="txthistory" cols="300" data-size="big" id="historico" name="historico" onclick="manipulateDOM.expandTextarea('historico')"
 					    readonly="readonly" rows="10" style="overflow-y: auto; cursor: pointer; display: none;" type="textarea"></textarea>
-					<button class="btn btn-primary" id="btnhistorico2" name="botaoHistorico2" onclick="mostraHistorico();" type="button">
+					<button class="btn btn-primary" id="btnhistorico2" name="botaoHistorico2" onclick="manipulateDOM.mostraHistorico();" type="button">
 						Histórico
 					</button>
 					<br>
@@ -619,9 +619,31 @@
 			<!-- FIM HISTORICO -->
 		</form>
 	</div>
+	<!-- 	<script type="text/javascript" src="validacao.js"></script>
+	<script type="text/javascript" src="formValidate.js"></script>
+	
+	
+	<script type="text/javascript" src="app.js"></script> -->
+
+
+	<!-- MODULES -->
+	<script type="text/javascript" src="src/dateFunctions.js"></script>
+	<script type="text/javascript" src="src/numbersAndCurrency.js"></script>
+	<script type="text/javascript" src="src/services.js"></script>
+	<script type="text/javascript" src="src/calculateModule.js"></script>
+	<script type="text/javascript" src="src/manipulateDOM.js"></script>
+	<script type="text/javascript" src="src/lifecycle.js"></script>
+
+	<!-- VALIDAÇÕES -->
 	<script type="text/javascript" src="validacao.js"></script>
 	<script type="text/javascript" src="formValidate.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+
+	<!-- APP -->
+	<script type="text/javascript" src="app-refact.js"></script>
+
+	<!-- MIN.JS 
+			<script type="text/javascript" src="dist/all.min.js"></script>
+			-->
 </body>
 
 </html>

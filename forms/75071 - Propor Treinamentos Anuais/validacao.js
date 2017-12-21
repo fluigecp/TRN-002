@@ -14,7 +14,7 @@ function validaCampos(atividade, proximaAtividade) {
 		});
 		
 		var dep = $("#departamento").closest(".input-group").find("span.tag-text").text();
-		var hasPlan = hasDepartamentoPlanejamentoThisYear(dep,$("#anoVigencia").val());
+		var hasPlan = servicesModule.hasDepartamentoPlanejamentoThisYear(dep, $("#anoVigencia").val());
 		if (hasPlan) {
 			throw("Já existe um planejamento de treinamentos anuais para este Segmento.");
 		}
@@ -133,30 +133,11 @@ function validaCampos(atividade, proximaAtividade) {
 		}
 
 		// Justificar ao término da execução do planejamento, caso o saldo total ficar negativo.
-		var saldo = converteParaFloat($("#saldo").val());
+		var saldo = numbersAndCurrency.convert.currencyStringToFloat($("#saldo").val());
 		if (saldo < 0 || atualizarPlanejamento.val() != "Sim") {
 			addHasFree('obsHistorico');
 		}
 		$("#previous_activity").val(atividade);
 		
 	}
-}
-
-/**
- * @param {string} departamento - Nome do departamento
- * @param {int} ano - ano vigente da solicitação
- * @description - Caso já exista um planejamento de treinamentos para o ano informado, 
- * é exibido um mensagem ao usuário.
- */
-function hasDepartamentoPlanejamentoThisYear(departamento,ano) {
-    var c1 = DatasetFactory.createConstraint("metadata#active", true, true,ConstraintType.MUST);
-    var c2 = DatasetFactory.createConstraint("departamento", departamento,departamento,ConstraintType.MUST); 
-    var c3 = DatasetFactory.createConstraint("anoVigencia",ano,ano,ConstraintType.MUST); 
-	var c4 = DatasetFactory.createConstraint("processState", "CANCELADO", "CANCELADO",ConstraintType.MUST_NOT);
-	var c5 = DatasetFactory.createConstraint("numProcess", getProcess(), getProcess(), ConstraintType.MUST_NOT);
-    var dataset = DatasetFactory.getDataset('propor_treinamentos_anuais',null,[c1,c2,c3,c4,c5],['documentid']);
-    if ( dataset.values.length > 0 ) {
-        return true;
-    }
-    return false;
 }
