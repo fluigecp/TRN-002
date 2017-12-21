@@ -1,4 +1,4 @@
-function displayFields(form,customHTML) {
+function displayFields(form, customHTML) {
 	var activity = getValue('WKNumState');
 	form.setShowDisabledFields(true);
 	var modo = form.getFormMode();
@@ -8,12 +8,12 @@ function displayFields(form,customHTML) {
 	customHTML.append("function getGestor(){return '" + getValue('WKManagerMode') + "'};");
 	customHTML.append("function getProcess(){return '" + getValue('WKNumProces') + "'};");
 	customHTML.append("</script>");
-	  
-	function oculta(variavel){        
+
+	function oculta(variavel) {
 		customHTML.append('<script>                                       ');
-		customHTML.append('$(\'[name="'+variavel+'"]\').css(\'display\', \'none\');                      ');
-		customHTML.append('$([name="'+variavel+'"]).parent().css(\'display\', \'none\');                                     ');
-		customHTML.append('var closers = $([name="'+variavel+'"]).closest(\'.form-field\').find(\'input, textarea, select, table\');');
+		customHTML.append('$(\'[name="' + variavel + '"]\').css(\'display\', \'none\');                      ');
+		customHTML.append('$([name="' + variavel + '"]).parent().css(\'display\', \'none\');                                     ');
+		customHTML.append('var closers = $([name="' + variavel + '"]).closest(\'.form-field\').find(\'input, textarea, select, table\');');
 		customHTML.append('var hideDiv = true;                                                                               ');
 		customHTML.append('$.each(closers, function(i, close) {                                                              ');
 		customHTML.append('  if (close.style.display != \'none\') {                                                          ');
@@ -22,20 +22,21 @@ function displayFields(form,customHTML) {
 		customHTML.append('});                                                                                               ');
 		customHTML.append('                                                                                                  ');
 		customHTML.append('if (hideDiv == true) {                                                                            ');
-		customHTML.append('  $([name="'+variavel+'"]).closest(\'.form-field\').css(\'display\', \'none\');                   ');
+		customHTML.append('  $([name="' + variavel + '"]).closest(\'.form-field\').css(\'display\', \'none\');                   ');
 		customHTML.append('}                                                                                                 ');
-		customHTML.append('$(\'[name="'+variavel+'"]\').closest(".form-field").hide();                                       ');
+		customHTML.append('$(\'[name="' + variavel + '"]\').closest(".form-field").hide();                                       ');
 		customHTML.append('</script>                                       ');
 	}
 
-	function ocultaClasse(classe){
+	function ocultaClasse(classe) {
 		customHTML.append('<script>');
-		customHTML.append('$(\'.'+classe+'\').css(\'display\', \'none\')');
+		customHTML.append('$(\'.' + classe + '\').css(\'display\', \'none\')');
 		customHTML.append('</script>');
 	}
-	function ocultaId(id){
+
+	function ocultaId(id) {
 		customHTML.append('<script>');
-		customHTML.append('$(\'#'+id+'\').css(\'display\', \'none\')');
+		customHTML.append('$(\'#' + id + '\').css(\'display\', \'none\')');
 		customHTML.append('</script>');
 	}
 	/**
@@ -43,7 +44,7 @@ function displayFields(form,customHTML) {
 	 */
 
 
-	if ( activity == 0 || activity == 4 ) {
+	if (activity == 0 || activity == 4) {
 		ocultaClasse('aprovacoesTreinamentoRH');
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		ocultaClasse('aprovacoesPlanejamentoRH');
@@ -53,8 +54,7 @@ function displayFields(form,customHTML) {
 		ocultaClasse('atualizarPlanejamentoContainer');
 		ocultaId('add-treinamento');
 		ocultaId('replicar-treinamento');
-    }
-	else if (activity == 12) {
+	} else if (activity == 12) {
 		if (form.getValue("treinamentoAprovado") != "Não")
 			ocultaClasse('aprovacoesTreinamentoRH');
 		if (form.getValue("treinamentoAprovadoGGR") != "Não")
@@ -63,18 +63,13 @@ function displayFields(form,customHTML) {
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('condicoesOrcamentarias');
 		ocultaClasse('atualizarPlanejamentoContainer');
-		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
-		if (modo != "VIEW"){
+		if (modo != "VIEW") {
 			ocultaClasse('matriculasNomesTbTreinamentosView');
 		}
-	}
-	else if (activity == 14) {
+	} else if (activity == 14) {
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		ocultaClasse('aprovacoesPlanejamentoRH');
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
@@ -83,15 +78,10 @@ function displayFields(form,customHTML) {
 		ocultaId('add-treinamento');
 		ocultaId('replicar-treinamento');
 		ocultaClasse('atualizarPlanejamentoContainer');
-		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
-	}
-	else if (activity == 18) {
+	} else if (activity == 18) {
 		ocultaClasse('aprovacoesTreinamentoRH');
 		ocultaClasse('aprovacoesPlanejamentoRH');
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
@@ -101,14 +91,10 @@ function displayFields(form,customHTML) {
 		ocultaClasse('btn-delete');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
-	}
-	else if (activity == 22) {
+	} else if (activity == 22) {
 		ocultaClasse('aprovacoesPlanejamentoRH');
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaId('add-treinamento');
@@ -116,16 +102,12 @@ function displayFields(form,customHTML) {
 		ocultaClasse('btn-delete');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final
 		ocultaClasse('saldoFinalContainer');
-	}
-	else if (activity == 24) {
+	} else if (activity == 24) {
 		ocultaClasse('aprovacoesTreinamentoRH');
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		if (form.getValue("planejamentoAprovadoRH") != "Não")
@@ -134,21 +116,17 @@ function displayFields(form,customHTML) {
 			ocultaClasse('aprovacoesPlanejamentoGerencia');
 		ocultaClasse('atualizarPlanejamentoContainer');
 		// Oculta a penútima e a última coluna da tabela
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(1)');
-		ocultaClasse('tableBodyRow td:nth-last-child(1)');
-		ocultaClasse('tableHeadRow .tableColumn:nth-last-child(2)');
-		ocultaClasse('tableBodyRow td:nth-last-child(2)');
+		ocultaClasse("status-valor-gasto-container");
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 		// Oculta saldo final
 		ocultaClasse('saldoFinalContainer');
 		// Oculta total estimado
 		ocultaId("tabTotalEstimadoQtde");
-		if (modo != "VIEW"){
+		if (modo != "VIEW") {
 			ocultaClasse('matriculasNomesTbTreinamentosView');
 		}
-	}
-	else if (activity == 26) {
+	} else if (activity == 26) {
 		ocultaClasse('aprovacoesTreinamentoRH');
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
@@ -160,9 +138,7 @@ function displayFields(form,customHTML) {
 		//Oculta total valor gasto
 		ocultaClasse('totalGastoContainer');
 
-	}
-
-	else if (activity == 30 || activity == 35 || activity == 40 || modo == "VIEW") {
+	} else if (activity == 30 || activity == 35 || activity == 40 || modo == "VIEW") {
 		ocultaId('add-treinamento');
 		ocultaId('replicar-treinamento');
 		ocultaClasse('btn-delete');
@@ -170,18 +146,18 @@ function displayFields(form,customHTML) {
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		ocultaClasse('aprovacoesPlanejamentoRH');
 		ocultaId('tabTotalEstimadoQtde');
-		if (activity == 30 ){
+		if (activity == 30) {
 			ocultaClasse('atualizarPlanejamentoContainer');
 			ocultaId("tabTotalEstimadoQtde");
 			//Oculta total valor gasto
 			ocultaClasse('totalGastoContainer');
 		} else {
 			ocultaClasse('aprovacoesPlanejamentoGerencia');
-			if ( activity == 40 ) {
+			if (activity == 40) {
 				ocultaClasse('atualizarPlanejamentoContainer');
 			}
 		}
-	} else if ( activity == 42 ) {
+	} else if (activity == 42) {
 		ocultaClasse('aprovacoesTreinamentoRH');
 		ocultaClasse('aprovacoesTreinamentoGerencia');
 		ocultaClasse('aprovacoesPlanejamentoGerencia');
@@ -198,12 +174,12 @@ function displayFields(form,customHTML) {
 		ocultaClasse("funcionariosAtivosContainer");
 	}
 
-	if ( modo == 'VIEW' ) {
+	if (modo == 'VIEW') {
 		form.setShowDisabledFields(false);
 		ocultaClasse("obsHistoricoContainer");
 	}
 
-	if ( activity == 51 ) {
+	if (activity == 51) {
 		ocultaClasse("obsHistoricoContainer");
 		ocultaClasse("condicoesOrcamentarias");
 		ocultaClasse('aprovacoesTreinamentoRH');
@@ -218,6 +194,6 @@ function displayFields(form,customHTML) {
 	}
 
 	/** Life Cycle */
-    
+
 
 }

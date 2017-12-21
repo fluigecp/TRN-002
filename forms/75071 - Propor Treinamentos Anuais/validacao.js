@@ -14,7 +14,7 @@ function validaCampos(atividade, proximaAtividade) {
 		});
 		
 		var dep = $("#departamento").closest(".input-group").find("span.tag-text").text();
-		var hasPlan = hasDepartamentoPlanejamentoThisYear(dep,$("#anoVigencia").val());
+		var hasPlan = servicesModule.hasDepartamentoPlanejamentoThisYear(dep, $("#anoVigencia").val());
 		if (hasPlan) {
 			throw("Já existe um planejamento de treinamentos anuais para este Segmento.");
 		}
@@ -22,15 +22,15 @@ function validaCampos(atividade, proximaAtividade) {
 	}
 
 	if ( atividade == 12 || atividade == 24 ) {
-		addHasFreeTable('input', 'treinamentoTbTreinamentos', 1);
-		addHasFreeTable('select', 'classificacaoTbTreinamentos', 1);
-		addHasFreeTable('textarea', 'justificativaTbTreinamentos', 1);
-		addHasFreeTable('input', 'qtdeParticipanteTbTreinamentos', 1);
-		addHasFreeTable('input', 'matriculasNomesTbTreinamentos', 1);
-		addHasFreeTable('input', 'entidadeSugeridaTbTreinamentos', 1);
-		addHasFreeTable('select', 'mesPrevistoTbTreinamentos', 1);
-		addHasFreeTable('input', 'cargaHorariaTbTreinamentos', 1);
-		addHasFreeTable('input', 'estimativaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'treinamentoTbTreinamentos', 1);
+		addHasFreeTable2('select', 'classificacaoTbTreinamentos', 1);
+		addHasFreeTable2('textarea', 'justificativaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'qtdeParticipanteTbTreinamentos', 1);
+		addHasFreeTable2('input', 'matriculasNomesTbTreinamentos', 1);
+		addHasFreeTable2('input', 'entidadeSugeridaTbTreinamentos', 1);
+		addHasFreeTable2('select', 'mesPrevistoTbTreinamentos', 1);
+		addHasFreeTable2('input', 'cargaHorariaTbTreinamentos', 1);
+		addHasFreeTable2('input', 'estimativaTbTreinamentos', 1);
 		var regCount = $("#treinamentos table tbody tr.tableBodyRow:not(:first)").length;
 		if (regCount < 1) {
 			addHasFree('obsHistorico');
@@ -95,7 +95,7 @@ function validaCampos(atividade, proximaAtividade) {
 	}
 
 	if ( atividade == 35 ) {
-		addHasFreeTable('input','valorGastoTbTreinamentos', 1);
+		addHasFreeTable2('input','valorGastoTbTreinamentos', 1);
 		var atualizarPlanejamento = $("input[name='atualizarPlanejamento']:checked");
 		var treinamentosCancelados = [];
 		var blankStats = false;
@@ -129,34 +129,15 @@ function validaCampos(atividade, proximaAtividade) {
 		}
 
 		if ( atualizarPlanejamento.val() == "Não" ){
-			addHasFreeTable('select', 'statsTbTreinamentos', 1);
+			addHasFreeTable2('select', 'statsTbTreinamentos', 1);
 		}
 
 		// Justificar ao término da execução do planejamento, caso o saldo total ficar negativo.
-		var saldo = converteParaFloat($("#saldo").val());
+		var saldo = numbersAndCurrency.convert.currencyStringToFloat($("#saldo").val());
 		if (saldo < 0 || atualizarPlanejamento.val() != "Sim") {
 			addHasFree('obsHistorico');
 		}
 		$("#previous_activity").val(atividade);
 		
 	}
-}
-
-/**
- * @param {string} departamento - Nome do departamento
- * @param {int} ano - ano vigente da solicitação
- * @description - Caso já exista um planejamento de treinamentos para o ano informado, 
- * é exibido um mensagem ao usuário.
- */
-function hasDepartamentoPlanejamentoThisYear(departamento,ano) {
-    var c1 = DatasetFactory.createConstraint("metadata#active", true, true,ConstraintType.MUST);
-    var c2 = DatasetFactory.createConstraint("departamento", departamento,departamento,ConstraintType.MUST); 
-    var c3 = DatasetFactory.createConstraint("anoVigencia",ano,ano,ConstraintType.MUST); 
-	var c4 = DatasetFactory.createConstraint("processState", "CANCELADO", "CANCELADO",ConstraintType.MUST_NOT);
-	var c5 = DatasetFactory.createConstraint("numProcess", getProcess(), getProcess(), ConstraintType.MUST_NOT);
-    var dataset = DatasetFactory.getDataset('propor_treinamentos_anuais',null,[c1,c2,c3,c4,c5],['documentid']);
-    if ( dataset.values.length > 0 ) {
-        return true;
-    }
-    return false;
 }

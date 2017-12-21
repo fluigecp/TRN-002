@@ -140,6 +140,21 @@ function exibeCamposObrigatorios() {
 		}
 	});
 
+	$('.has-free-table-2').each(function (index, el) {
+		if (getValue(this.name) == '') {
+			$(this).closest('table tbody td div').addClass("has-error");
+			label = $(this).closest(".form-input").find("label").text();
+			if (label.indexOf(' *') > -1) {
+				label = label.replace(' *', '');
+			}
+			if (camposObrigatorios.indexOf(label) < 0) {
+				camposObrigatorios.push(label);
+			}
+		}
+	});
+
+	
+
 	$(".has-free-array").each(function () {
 		$(this).parent().parent().addClass("has-error");
 		label = $(this).closest('.form-field').find('label').text();
@@ -216,6 +231,24 @@ function addHasFreeTable(type, name, valida) {
 		}
 	} else if (valida == 1) {
 		$('table tbody ' + type + "[name^='" + name + "___']").addClass('has-free-table');
+	}
+}
+
+//Adiciona classe hasFreeTable
+function addHasFreeTable2(type, name, valida) {
+	var contador = 0;
+	if (valida == 0) {
+		$('table tbody ' + type + '[name^="' + name + '___"]').each(function (index, el) {
+			contador++;
+			if (getValue(this.name) == '') {
+				$(this).addClass('has-free-table-2');
+			}
+		});
+		if (contador == 0) {
+			$('table tbody ' + type + "[name^='" + name + "']").addClass('has-free-table-2');
+		}
+	} else if (valida == 1) {
+		$('table tbody ' + type + "[name^='" + name + "___']").addClass('has-free-table-2');
 	}
 }
 
