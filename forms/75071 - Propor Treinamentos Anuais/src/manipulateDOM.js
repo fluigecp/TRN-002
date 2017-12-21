@@ -197,7 +197,7 @@ var manipulateDOM = (function(){
      * @param {*} combo - Combobox de status do treinamento
      */
     var atualizaEstimativaStatus = function(combo) {
-        var currentValorEstimativa, estimativa, comboValue;
+        var currentValorEstimativa, currentValorGasto, estimativa, comboValue;
         //obtém o valor da estimativa
         currentValorEstimativa = combo.closest(".tableBodyRow").find('input[name*=estimativaTbTreinamentos]');
         //obtém o valor gasto no treinamento
