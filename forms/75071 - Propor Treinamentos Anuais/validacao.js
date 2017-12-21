@@ -133,7 +133,7 @@ function validaCampos(atividade, proximaAtividade) {
 		}
 
 		// Justificar ao término da execução do planejamento, caso o saldo total ficar negativo.
-		var saldo = converteParaFloat($("#saldo").val());
+		var saldo = numbersAndCurrency.convert.currencyStringToFloat($("#saldo").val());
 		if (saldo < 0 || atualizarPlanejamento.val() != "Sim") {
 			addHasFree('obsHistorico');
 		}
